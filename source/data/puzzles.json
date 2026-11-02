@@ -1,0 +1,2250 @@
+[
+ {
+  "id": 1,
+  "ridx": 18,
+  "kind": "analysis",
+  "side": "w",
+  "fen": "rnbq1rk1/pp2bppp/4pn2/2pp4/2P5/1P3NP1/P2PPPBP/RNBQ1RK1 w - - 0 7",
+  "line": [
+   "c4d5",
+   "f6d5",
+   "c1b2",
+   "b8c6",
+   "d2d4",
+   "c5d4",
+   "f3d4",
+   "c6d4",
+   "d1d4",
+   "e7f6",
+   "d4d2"
+  ],
+  "sans": [
+   "cxd5",
+   "Nxd5",
+   "Bb2",
+   "Nc6",
+   "d4",
+   "cxd4",
+   "Nxd4",
+   "Nxd4",
+   "Qxd4",
+   "Bf6",
+   "Qd2"
+  ],
+  "num": 7,
+  "types": [
+   "P",
+   "B",
+   "P",
+   null,
+   "Q",
+   null
+  ],
+  "k": 6,
+  "game": {
+   "white": "Ding, Liren",
+   "black": "Nepomniachtchi, Ian",
+   "event": "FIDE World Championship Match 2023 Rapid Tie-break",
+   "date": "2023.04.30",
+   "round": "3",
+   "result": "1/2-1/2",
+   "site": "Astana KAZ",
+   "whiteElo": "2829",
+   "blackElo": "2761",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "A14",
+   "opening": "English Opening: Agincourt Defense, Neo-Catalan Declined",
+   "url": "https://lichess.org/broadcast/fide-world-chess-championship-2023/tie-breaks/jCs1wd0E/kg9R9qJr"
+  },
+  "start_ply": 12,
+  "reply": {
+   "cls": "P",
+   "lvl": 2,
+   "moves": [
+    "EXP-MECH",
+    "FIX-EDIT",
+    "RT-DOC",
+    "M-COND",
+    "Q-FILE",
+    "RT-DEFER"
+   ],
+   "rungs": [
+    0,
+    2,
+    0,
+    4
+   ],
+   "text": "set the solver to COMPLEX; FAQ link; if not, send the MODFLOW file",
+   "prob": "convergence error on the first day",
+   "cat": "Run-time failure"
+  }
+ },
+ {
+  "id": 2,
+  "ridx": 17,
+  "kind": "analysis",
+  "side": "b",
+  "fen": "4b3/1n4pk/2pB1p2/pp2P2p/2pN1P1P/P1P5/1P4PK/8 b - - 0 39",
+  "line": [
+   "h7g8",
+   "h2g3",
+   "e8d7",
+   "d6c7",
+   "b7c5",
+   "c7a5",
+   "g8f7"
+  ],
+  "sans": [
+   "Kg8",
+   "Kg3",
+   "Bd7",
+   "Bc7",
+   "Nc5",
+   "Bxa5",
+   "Kf7"
+  ],
+  "num": 39,
+  "types": [
+   null,
+   "B",
+   null,
+   "K"
+  ],
+  "k": 4,
+  "game": {
+   "white": "Nepomniachtchi, Ian",
+   "black": "Ding, Liren",
+   "event": "FIDE World Championship Match 2023",
+   "date": "2023.04.09",
+   "round": "1",
+   "result": "1/2-1/2",
+   "site": "Astana KAZ",
+   "whiteElo": "2795",
+   "blackElo": "2788",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "C85",
+   "opening": "Ruy Lopez: Closed, Delayed Exchange",
+   "url": "https://lichess.org/broadcast/fide-world-chess-championship-2023/round-1/kx9gaE3w/5XN2BOOy"
+  },
+  "start_ply": 77,
+  "reply": {
+   "cls": "P",
+   "lvl": 3,
+   "moves": [
+    "M-HEDGE",
+    "FIX-EDIT",
+    "M-COND",
+    "Q-PROJECT"
+   ],
+   "rungs": [
+    2,
+    5
+   ],
+   "text": "change SS to TR in the .dis; if it persists, share the project",
+   "prob": "model runs a single period (message in an image)",
+   "cat": "Run-time failure"
+  }
+ },
+ {
+  "id": 3,
+  "ridx": 52,
+  "kind": "analysis",
+  "side": "w",
+  "fen": "1r4k1/5pp1/1b1p1q1p/1p3P1P/2p1Q3/2P2N2/1P3PP1/4R1K1 w - - 3 32",
+  "line": [
+   "e1e2",
+   "b6c5",
+   "g2g4",
+   "f6d8",
+   "e4d5",
+   "g8f8",
+   "g1f1",
+   "b8c8",
+   "e2e4"
+  ],
+  "sans": [
+   "Re2",
+   "Bc5",
+   "g4",
+   "Qd8",
+   "Qd5",
+   "Kf8",
+   "Kf1",
+   "Rc8",
+   "Re4"
+  ],
+  "num": 32,
+  "types": [
+   "R",
+   "P",
+   null,
+   "K",
+   null
+  ],
+  "k": 5,
+  "game": {
+   "white": "Nepomniachtchi, Ian",
+   "black": "Ding, Liren",
+   "event": "FIDE World Championship Match 2023",
+   "date": "2023.04.15",
+   "round": "5",
+   "result": "1-0",
+   "site": "Astana KAZ",
+   "whiteElo": "2795",
+   "blackElo": "2788",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "C84",
+   "opening": "Ruy Lopez: Closed, Martinez Variation",
+   "url": "https://lichess.org/broadcast/fide-world-chess-championship-2023/round-5/WROIVlfQ/RfYZFDV3"
+  },
+  "start_ply": 62,
+  "reply": {
+   "cls": "P",
+   "lvl": 2,
+   "moves": [
+    "Q-FORMAT",
+    "EXP-LIMIT",
+    "M-COND",
+    "Q-PROJECT",
+    "RT-DEFER"
+   ],
+   "rungs": [
+    3,
+    0,
+    5
+   ],
+   "text": "is the DEM a TIFF? it should work; if it persists, share the project",
+   "prob": "DEM upload fails (insertChildNode)",
+   "cat": "Plug-in error"
+  }
+ },
+ {
+  "id": 4,
+  "ridx": 53,
+  "kind": "analysis",
+  "side": "w",
+  "fen": "4r1k1/pnp1r1pp/1p3p1q/2pPP2b/2P2p2/2Q2B1P/P2NRPP1/R5K1 w - - 0 24",
+  "line": [
+   "e5e6",
+   "b7d6",
+   "a1e1",
+   "d6f5",
+   "f3h5",
+   "h6h5",
+   "e2e4"
+  ],
+  "sans": [
+   "e6",
+   "Nd6",
+   "Rae1",
+   "Nf5",
+   "Bxh5",
+   "Qxh5",
+   "Re4"
+  ],
+  "num": 24,
+  "types": [
+   "P",
+   "R",
+   "B",
+   null
+  ],
+  "k": 4,
+  "game": {
+   "white": "Ding, Liren",
+   "black": "Nepomniachtchi, Ian",
+   "event": "FIDE World Championship Match 2023",
+   "date": "2023.04.13",
+   "round": "4",
+   "result": "1-0",
+   "site": "Astana KAZ",
+   "whiteElo": "2788",
+   "blackElo": "2795",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "A28",
+   "opening": "English Opening: King's English Variation, Four Knights Variation, Quiet Line",
+   "url": "https://lichess.org/broadcast/fide-world-chess-championship-2023/round-4/Gm6aahO4/4TH4sEZm"
+  },
+  "start_ply": 46,
+  "reply": {
+   "cls": "P",
+   "lvl": 2,
+   "moves": [
+    "EXP-MECH",
+    "Q-STATE",
+    "FIX-INTERIM",
+    "RT-DEFER"
+   ],
+   "rungs": [
+    0,
+    3,
+    2
+   ],
+   "text": "answers the domain question; asks whether it crashes before any simulation",
+   "prob": "MODFLOW domain smaller than the catchment; a Yes/No option",
+   "cat": "Coupling / configuration"
+  }
+ },
+ {
+  "id": 5,
+  "ridx": 13,
+  "kind": "analysis",
+  "side": "w",
+  "fen": "rnbq1rk1/ppp2ppp/3b4/3p4/3Pn3/3B1N2/PPP2PPP/RNBQ1RK1 w - - 4 8",
+  "line": [
+   "c2c4",
+   "c7c6",
+   "f1e1",
+   "c8f5",
+   "d1b3",
+   "d8d7",
+   "b1c3"
+  ],
+  "sans": [
+   "c4",
+   "c6",
+   "Re1",
+   "Bf5",
+   "Qb3",
+   "Qd7",
+   "Nc3"
+  ],
+  "num": 8,
+  "types": [
+   "P",
+   "R",
+   "Q",
+   null
+  ],
+  "k": 4,
+  "game": {
+   "white": "Carlsen, Magnus",
+   "black": "Nepomniachtchi, Ian",
+   "event": "FIDE World Championship Match 2021",
+   "date": "2021.11.30",
+   "round": "4",
+   "result": "1/2-1/2",
+   "site": "Dubai UAE",
+   "whiteElo": "2855",
+   "blackElo": "2782",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "C42",
+   "opening": "Petrov's Defense: Classical Attack, Staunton Variation",
+   "url": "https://lichess.org/broadcast/world-chess-championship-2021/game-4/u60nK3CM/9c7edCLW"
+  },
+  "start_ply": 14,
+  "reply": {
+   "cls": "P",
+   "lvl": 2,
+   "moves": [
+    "EXP-REFRAME",
+    "Q-STATE",
+    "Q-FILE",
+    "RT-DEFER"
+   ],
+   "rungs": [
+    0,
+    3,
+    4
+   ],
+   "text": "does not look like an error; does the model crash? send the files",
+   "prob": "MODFLOW steps differ from the SWAT-MODFLOW run",
+   "cat": "Coupling / configuration"
+  }
+ },
+ {
+  "id": 6,
+  "ridx": 35,
+  "kind": "resign",
+  "side": "b",
+  "fen": "2b2rk1/1r2b1pp/p1q1P3/1p1N3P/2p1R3/P3Q1P1/1P3P2/3R2K1 b - - 0 31",
+  "line": [
+   "e7c5",
+   "e3g5",
+   "c8e6",
+   "h5h6",
+   "f8f2"
+  ],
+  "sans": [
+   "Bc5",
+   "Qg5",
+   "Bxe6",
+   "h6",
+   "Rxf2"
+  ],
+  "num": 31,
+  "types": [
+   null,
+   "B",
+   null
+  ],
+  "k": 3,
+  "game": {
+   "white": "Praggnanandhaa R",
+   "black": "Gukesh D",
+   "event": "FIDE Candidates 2024",
+   "date": "2024.04.04",
+   "round": "2",
+   "result": "0-1",
+   "site": "Toronto, Canada",
+   "whiteElo": "2747",
+   "blackElo": "2743",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "D30",
+   "opening": "Queen's Gambit Declined",
+   "url": "https://lichess.org/broadcast/fide-candidates-2024-open/round-2/GenKIJ8A/wUq7Nq6w"
+  },
+  "start_ply": 61,
+  "reply": {
+   "cls": "D",
+   "lvl": 3,
+   "moves": [
+    "M-UNSURE",
+    "FIX-PARAMS",
+    "M-RANK"
+   ],
+   "rungs": [
+    2
+   ],
+   "text": "hard to specify; lower K and Sy, raise CN2, then river parameters",
+   "prob": "runoff differs between SWAT and SWAT-MODFLOW-RT3D",
+   "cat": "Calibration / method"
+  }
+ },
+ {
+  "id": 7,
+  "ridx": 19,
+  "kind": "resign",
+  "side": "b",
+  "fen": "1k1r4/2q4p/p2bpp2/5p1Q/Pp2b3/2P2N1P/3R1PP1/4R2K b - - 0 27",
+  "line": [
+   "b4c3",
+   "d2d4",
+   "c3c2",
+   "h5h6",
+   "e6e5"
+  ],
+  "sans": [
+   "bxc3",
+   "Rd4",
+   "c2",
+   "Qh6",
+   "e5"
+  ],
+  "num": 27,
+  "types": [
+   "P",
+   "P",
+   null
+  ],
+  "k": 3,
+  "game": {
+   "white": "Ding, Liren",
+   "black": "Nepomniachtchi, Ian",
+   "event": "FIDE World Championship Match 2023",
+   "date": "2023.04.10",
+   "round": "2",
+   "result": "0-1",
+   "site": "Astana KAZ",
+   "whiteElo": "2788",
+   "blackElo": "2795",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "E10",
+   "opening": "Indian Defense: Anti-Nimzo-Indian",
+   "url": "https://lichess.org/broadcast/fide-world-chess-championship-2023/round-2/ogOxYZ5q/UZjIYbV1"
+  },
+  "start_ply": 53,
+  "reply": {
+   "cls": "D",
+   "lvl": 3,
+   "moves": [
+    "EXP-PRINCIPLE",
+    "RT-DOC",
+    "M-SELFCORRECT"
+   ],
+   "rungs": [
+    0,
+    0
+   ],
+   "text": "units must be consistent; reference link",
+   "prob": "units of the observed values in RVOB",
+   "cat": "Input / set-up"
+  }
+ },
+ {
+  "id": 8,
+  "ridx": 8,
+  "kind": "resign",
+  "side": "w",
+  "fen": "1b3r1k/p6p/4R1n1/5p1r/P2P1pPq/2Q4P/1P3PB1/6RK w - - 0 36",
+  "line": [
+   "g4h5",
+   "h4h5",
+   "d4d5",
+   "h8g8",
+   "d5d6"
+  ],
+  "sans": [
+   "gxh5",
+   "Qxh5",
+   "d5+",
+   "Kg8",
+   "d6"
+  ],
+  "num": 36,
+  "types": [
+   "P",
+   "P",
+   "P"
+  ],
+  "k": 3,
+  "game": {
+   "white": "Ding, Liren",
+   "black": "Nepomniachtchi, Ian",
+   "event": "FIDE World Championship Match 2023",
+   "date": "2023.04.26",
+   "round": "12",
+   "result": "1-0",
+   "site": "Astana KAZ",
+   "whiteElo": "2788",
+   "blackElo": "2795",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "D04",
+   "opening": "Queen's Pawn Game: Colle System",
+   "url": "https://lichess.org/broadcast/fide-world-chess-championship-2023/round-12/J8916aqB/Ug3FxCtz"
+  },
+  "start_ply": 70,
+  "reply": {
+   "cls": "D",
+   "lvl": 2,
+   "moves": [
+    "EXP-REFRAME",
+    "EXP-LIMIT",
+    "RT-DOC"
+   ],
+   "rungs": [
+    0,
+    0,
+    0
+   ],
+   "text": "lists the available outputs and scales",
+   "prob": "which outputs can feed a flood model",
+   "cat": "How-to / guidance"
+  }
+ },
+ {
+  "id": 9,
+  "ridx": 22,
+  "kind": "resign",
+  "side": "b",
+  "fen": "8/6pk/8/3Qbq1P/5P2/p3B1p1/2p5/5K2 b - - 0 67",
+  "line": [
+   "a3a2",
+   "d5a2",
+   "e5f4"
+  ],
+  "sans": [
+   "a2",
+   "Qxa2",
+   "Bxf4"
+  ],
+  "num": 67,
+  "types": [
+   "P",
+   "B"
+  ],
+  "k": 2,
+  "game": {
+   "white": "Nepomniachtchi, Ian",
+   "black": "Ding, Liren",
+   "event": "FIDE World Championship Match 2023 Rapid Tie-break",
+   "date": "2023.04.30",
+   "round": "4",
+   "result": "0-1",
+   "site": "Astana KAZ",
+   "whiteElo": "2761",
+   "blackElo": "2829",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "C84",
+   "opening": "Ruy Lopez: Closed, Martinez Variation",
+   "url": "https://lichess.org/broadcast/fide-world-chess-championship-2023/tie-breaks/jCs1wd0E/8QvKR1zU"
+  },
+  "start_ply": 133,
+  "reply": {
+   "cls": "D",
+   "lvl": 3,
+   "moves": [
+    "EXP-MECH",
+    "FIX-PARAMS"
+   ],
+   "rungs": [
+    0,
+    2
+   ],
+   "text": "all percolation goes to MODFLOW; adjust CN, ET and soil parameters",
+   "prob": "which SWAT output becomes recharge, and how to reduce it",
+   "cat": "Calibration / method"
+  }
+ },
+ {
+  "id": 10,
+  "ridx": 39,
+  "kind": "resign",
+  "side": "b",
+  "fen": "8/5p2/2p1p2p/2PnP1k1/2KB4/1B3PP1/p7/4b3 b - - 4 56",
+  "line": [
+   "e1g3",
+   "b3a2",
+   "h6h5"
+  ],
+  "sans": [
+   "Bxg3",
+   "Bxa2",
+   "h5"
+  ],
+  "num": 56,
+  "types": [
+   "B",
+   "P"
+  ],
+  "k": 2,
+  "game": {
+   "white": "Abasov, Nijat",
+   "black": "Gukesh D",
+   "event": "FIDE Candidates 2024",
+   "date": "2024.04.18",
+   "round": "12",
+   "result": "0-1",
+   "site": "Toronto, Canada",
+   "whiteElo": "2632",
+   "blackElo": "2743",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "E32",
+   "opening": "Nimzo-Indian Defense: Classical Variation",
+   "url": "https://lichess.org/broadcast/fide-candidates-2024-open/round-12/eJghIBZe/KcjJuTXj"
+  },
+  "start_ply": 111,
+  "reply": {
+   "cls": "D",
+   "lvl": 3,
+   "moves": [
+    "FIX-PARAMS",
+    "EXP-MECH"
+   ],
+   "rungs": [
+    2,
+    0
+   ],
+   "text": "K, Sy, thicknesses, boundary and initial heads",
+   "prob": "how to lower the simulated groundwater level by about 10 m",
+   "cat": "Calibration / method"
+  }
+ },
+ {
+  "id": 11,
+  "ridx": 20,
+  "kind": "resign",
+  "side": "b",
+  "fen": "1r4k1/1P4p1/5p1p/4p3/3R4/P6P/3N1PP1/6K1 b - - 0 39",
+  "line": [
+   "e5d4",
+   "d2b3",
+   "d4d3"
+  ],
+  "sans": [
+   "exd4",
+   "Nb3",
+   "d3"
+  ],
+  "num": 39,
+  "types": [
+   "P",
+   "P"
+  ],
+  "k": 2,
+  "game": {
+   "white": "Sarana, Alexey",
+   "black": "Harikrishna, Pentala",
+   "event": "Tata Steel Chess Tournament 2025 Masters",
+   "date": "2025.01.31",
+   "round": "11.6",
+   "result": "0-1",
+   "site": "Wijk aan Zee, Netherlands",
+   "whiteElo": "2677",
+   "blackElo": "2695",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "D37",
+   "opening": "Queen's Gambit Declined: Three Knights Variation",
+   "url": "https://lichess.org/broadcast/tata-steel-chess-2025-masters/round-11/iAu6JSH1/n074qloL"
+  },
+  "start_ply": 77,
+  "reply": {
+   "cls": "D",
+   "lvl": 3,
+   "moves": [
+    "EXP-VALIDATE",
+    "EXP-MECH"
+   ],
+   "rungs": [
+    0,
+    0
+   ],
+   "text": "monthly is fine; stress periods follow pumping; recharge comes from SWAT",
+   "prob": "monthly calibration for a snow-dominated basin; stress periods",
+   "cat": "Calibration / method"
+  }
+ },
+ {
+  "id": 12,
+  "ridx": 24,
+  "kind": "resign",
+  "side": "b",
+  "fen": "8/4B1pk/7p/3rN3/r4PP1/4K2P/8/8 b - - 3 62",
+  "line": [
+   "g7g5",
+   "e5d3",
+   "g5f4"
+  ],
+  "sans": [
+   "g5",
+   "Nd3",
+   "gxf4+"
+  ],
+  "num": 62,
+  "types": [
+   "P",
+   "P"
+  ],
+  "k": 2,
+  "game": {
+   "white": "Warmerdam, Max",
+   "black": "Wei, Yi",
+   "event": "Tata Steel Chess Tournament 2025 Masters",
+   "date": "2025.01.26",
+   "round": "8.1",
+   "result": "0-1",
+   "site": "Wijk aan Zee, Netherlands",
+   "whiteElo": "2646",
+   "blackElo": "2751",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "C45",
+   "opening": "Scotch Game: Schmidt Variation",
+   "url": "https://lichess.org/broadcast/tata-steel-chess-2025-masters/round-8/ywc5BNQT/hLu7J66K"
+  },
+  "start_ply": 123,
+  "reply": {
+   "cls": "D",
+   "lvl": 3,
+   "moves": [
+    "EXP-MECH",
+    "EXP-VALIDATE"
+   ],
+   "rungs": [
+    0,
+    0
+   ],
+   "text": "derived from SWAT percolation; approach reasonable, check the water balance",
+   "prob": "questions on the recharge output",
+   "cat": "Results interpretation"
+  }
+ },
+ {
+  "id": 13,
+  "ridx": 40,
+  "kind": "analysis",
+  "side": "b",
+  "fen": "8/5pk1/R6p/p3p3/4P2P/6K1/r4P2/8 b - - 9 48",
+  "line": [
+   "h6h5",
+   "a6a8",
+   "a2a1",
+   "g3g2",
+   "a5a4"
+  ],
+  "sans": [
+   "h5",
+   "Ra8",
+   "Ra1",
+   "Kg2",
+   "a4"
+  ],
+  "num": 48,
+  "types": [
+   "P",
+   "R",
+   "P"
+  ],
+  "k": 3,
+  "game": {
+   "white": "Ding, Liren",
+   "black": "Nepomniachtchi, Ian",
+   "event": "FIDE World Championship Match 2023",
+   "date": "2023.04.29",
+   "round": "14",
+   "result": "1/2-1/2",
+   "site": "Astana KAZ",
+   "whiteElo": "2788",
+   "blackElo": "2795",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "E46",
+   "opening": "Nimzo-Indian Defense: Normal Variation",
+   "url": "https://lichess.org/broadcast/fide-world-chess-championship-2023/round-14/qiMCJOhv/7qDGum8C"
+  },
+  "start_ply": 95,
+  "reply": {
+   "cls": "P",
+   "lvl": 3,
+   "moves": [
+    "EXP-MECH",
+    "Q-CLARIFY",
+    "EXP-LIMIT"
+   ],
+   "rungs": [
+    0,
+    3,
+    0
+   ],
+   "text": "answers the first question; says the expert does not understand the others",
+   "prob": "how QSWATMOD passes recharge and streamflow",
+   "cat": "How-to / guidance"
+  }
+ },
+ {
+  "id": 14,
+  "ridx": 27,
+  "kind": "analysis",
+  "side": "b",
+  "fen": "r4rk1/p3np2/bp1Ppqp1/2p1p3/2P5/P1P3N1/R4PP1/3QKB1R b K - 0 17",
+  "line": [
+   "e7f5",
+   "g3e4",
+   "f6d8",
+   "d1d3",
+   "g8g7"
+  ],
+  "sans": [
+   "Nf5",
+   "Ne4",
+   "Qd8",
+   "Qd3",
+   "Kg7"
+  ],
+  "num": 17,
+  "types": [
+   null,
+   "Q",
+   null
+  ],
+  "k": 3,
+  "game": {
+   "white": "Ding, Liren",
+   "black": "Nepomniachtchi, Ian",
+   "event": "FIDE World Championship Match 2023",
+   "date": "2023.04.20",
+   "round": "8",
+   "result": "1/2-1/2",
+   "site": "Astana KAZ",
+   "whiteElo": "2788",
+   "blackElo": "2795",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "E28",
+   "opening": "Nimzo-Indian Defense: Sämisch Variation",
+   "url": "https://lichess.org/broadcast/fide-world-chess-championship-2023/round-8/tPoWnKSg/8N4czVA4"
+  },
+  "start_ply": 33,
+  "reply": {
+   "cls": "P",
+   "lvl": 3,
+   "moves": [
+    "M-HEDGE",
+    "Q-FILE",
+    "RT-DEFER"
+   ],
+   "rungs": [
+    4
+   ],
+   "text": "the plug-in could not read the grid rows; share the .dis",
+   "prob": "UnboundLocalError (delr) at 96%",
+   "cat": "Plug-in error"
+  }
+ },
+ {
+  "id": 15,
+  "ridx": 44,
+  "kind": "analysis",
+  "side": "w",
+  "fen": "r6r/pp2kp2/4b3/8/2PR1R2/2P4p/P3B1PP/6K1 w - - 0 23",
+  "line": [
+   "g2g4",
+   "a8c8",
+   "g1f2",
+   "c8c5",
+   "a2a4"
+  ],
+  "sans": [
+   "g4",
+   "Rac8",
+   "Kf2",
+   "Rc5",
+   "a4"
+  ],
+  "num": 23,
+  "types": [
+   "P",
+   "K",
+   null
+  ],
+  "k": 3,
+  "game": {
+   "white": "Ding, Liren",
+   "black": "Nepomniachtchi, Ian",
+   "event": "FIDE World Championship Match 2023",
+   "date": "2023.04.23",
+   "round": "10",
+   "result": "1/2-1/2",
+   "site": "Astana KAZ",
+   "whiteElo": "2788",
+   "blackElo": "2795",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "A28",
+   "opening": "English Opening: Four Knights System, Nimzowitsch Variation",
+   "url": "https://lichess.org/broadcast/fide-world-chess-championship-2023/round-10/UwnYlYd9/HXAd4Mrf"
+  },
+  "start_ply": 44,
+  "reply": {
+   "cls": "P",
+   "lvl": 2,
+   "moves": [
+    "EXP-REFRAME",
+    "Q-PROJECT",
+    "RT-DEFER"
+   ],
+   "rungs": [
+    0,
+    5
+   ],
+   "text": "the file is missing because the model crashed; share the project",
+   "prob": "FileNotFound for swatmf_out_MF_obs",
+   "cat": "Run-time failure"
+  }
+ },
+ {
+  "id": 16,
+  "ridx": 4,
+  "kind": "analysis",
+  "side": "w",
+  "fen": "6k1/2q2pp1/1p5p/1N2n2r/4P1b1/P1R3P1/3r1PB1/1R4K1 w - - 0 27",
+  "line": [
+   "b5c7",
+   "g4h3",
+   "g2h3",
+   "h5h3",
+   "g1g2",
+   "h3h5",
+   "b1b5"
+  ],
+  "sans": [
+   "Nxc7",
+   "Bh3",
+   "Bxh3",
+   "Rxh3",
+   "Kg2",
+   "Rh5",
+   "Rb5"
+  ],
+  "num": 27,
+  "types": [
+   "N",
+   null,
+   "K",
+   null
+  ],
+  "k": 4,
+  "game": {
+   "white": "Ding, Liren",
+   "black": "Nepomniachtchi, Ian",
+   "event": "FIDE World Championship Match 2023 Rapid Tie-break",
+   "date": "2023.04.30",
+   "round": "1",
+   "result": "1/2-1/2",
+   "site": "Astana KAZ",
+   "whiteElo": "2829",
+   "blackElo": "2761",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "D02",
+   "opening": "Queen's Pawn Game: Symmetrical Variation",
+   "url": "https://lichess.org/broadcast/fide-world-chess-championship-2023/tie-breaks/jCs1wd0E/N0zfHJGL"
+  },
+  "start_ply": 52,
+  "reply": {
+   "cls": "A",
+   "lvl": 2,
+   "moves": [
+    "CHK-PRECOND",
+    "M-COND",
+    "Q-PROJECT",
+    "RT-DEFER"
+   ],
+   "rungs": [
+    1,
+    5
+   ],
+   "text": "check that the simulation ran; share project folder and GIS file",
+   "prob": "KeyError 2 when plotting results",
+   "cat": "Plug-in error"
+  }
+ },
+ {
+  "id": 17,
+  "ridx": 30,
+  "kind": "analysis",
+  "side": "w",
+  "fen": "3r2k1/p1q2p1p/4p1p1/2p1b3/4b2R/1PP4Q/P5PP/4R1K1 w - - 0 27",
+  "line": [
+   "h4e4",
+   "d8d5",
+   "e4h4",
+   "c7d6",
+   "h3e3"
+  ],
+  "sans": [
+   "Rhxe4",
+   "Rd5",
+   "Rh4",
+   "Qd6",
+   "Qe3"
+  ],
+  "num": 27,
+  "types": [
+   "R",
+   "R",
+   "Q"
+  ],
+  "k": 3,
+  "game": {
+   "white": "Nepomniachtchi, Ian",
+   "black": "Ding, Liren",
+   "event": "FIDE World Championship Match 2023",
+   "date": "2023.04.18",
+   "round": "7",
+   "result": "1-0",
+   "site": "Astana KAZ",
+   "whiteElo": "2795",
+   "blackElo": "2788",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "C07",
+   "opening": "French Defense: Tarrasch Variation, Open System, Euwe-Keres Line",
+   "url": "https://lichess.org/broadcast/fide-world-chess-championship-2023/round-7/7oa37nb4/Zc05AcYt"
+  },
+  "start_ply": 52,
+  "reply": {
+   "cls": "A",
+   "lvl": 2,
+   "moves": [
+    "Q-STATE",
+    "Q-ERROR",
+    "Q-FILE"
+   ],
+   "rungs": [
+    3,
+    3,
+    4
+   ],
+   "text": "did linking succeed? share error messages or the .lst",
+   "prob": "the run button does nothing",
+   "cat": "Run-time failure"
+  }
+ },
+ {
+  "id": 18,
+  "ridx": 55,
+  "kind": "analysis",
+  "side": "w",
+  "fen": "r1bqkbnr/1ppp1ppp/p1n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 0 4",
+  "line": [
+   "b5a4",
+   "g8f6",
+   "e1g1",
+   "f8e7",
+   "d2d3"
+  ],
+  "sans": [
+   "Ba4",
+   "Nf6",
+   "O-O",
+   "Be7",
+   "d3"
+  ],
+  "num": 4,
+  "types": [
+   null,
+   "K",
+   null
+  ],
+  "k": 3,
+  "game": {
+   "white": "Nepomniachtchi, Ian",
+   "black": "Ding, Liren",
+   "event": "FIDE World Championship Match 2023 Rapid Tie-break",
+   "date": "2023.04.30",
+   "round": "2",
+   "result": "1/2-1/2",
+   "site": "Astana KAZ",
+   "whiteElo": "2761",
+   "blackElo": "2829",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "C84",
+   "opening": "Ruy Lopez: Closed, Martinez Variation",
+   "url": "https://lichess.org/broadcast/fide-world-chess-championship-2023/tie-breaks/jCs1wd0E/93FF5sF9"
+  },
+  "start_ply": 6,
+  "reply": {
+   "cls": "A",
+   "lvl": 1,
+   "moves": [
+    "M-REASON",
+    "Q-PROJECT",
+    "RT-DEFER"
+   ],
+   "rungs": [
+    5
+   ],
+   "text": "needs to see the project; share folder and GIS file",
+   "prob": "linking pumping to irrigation; irrigation.txt all zeros",
+   "cat": "Coupling / configuration"
+  }
+ },
+ {
+  "id": 19,
+  "ridx": 6,
+  "kind": "resign",
+  "side": "w",
+  "fen": "2r3r1/4k3/5p2/1p3R1P/p2BPKP1/P7/1P6/8 w - - 0 62",
+  "line": [
+   "d4f6",
+   "e7e6",
+   "h5h6"
+  ],
+  "sans": [
+   "Bxf6+",
+   "Ke6",
+   "h6"
+  ],
+  "num": 62,
+  "types": [
+   "B",
+   "P"
+  ],
+  "k": 2,
+  "game": {
+   "white": "Giri, Anish",
+   "black": "Praggnanandhaa R",
+   "event": "Tata Steel Chess Tournament 2025 Masters",
+   "date": "2025.01.28",
+   "round": "9.5",
+   "result": "1-0",
+   "site": "Wijk aan Zee, Netherlands",
+   "whiteElo": "2731",
+   "blackElo": "2741",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "E10",
+   "opening": "Indian Defense: Anti-Nimzo-Indian",
+   "url": "https://lichess.org/broadcast/tata-steel-chess-2025-masters/round-9/y1UCH4bb/Z0Qi1OnD"
+  },
+  "start_ply": 122,
+  "reply": {
+   "cls": "D",
+   "lvl": 2,
+   "moves": [
+    "FIX-SWITCH",
+    "RT-DOC"
+   ],
+   "rungs": [
+    2,
+    0
+   ],
+   "text": "use ModelMuse; tutorial links",
+   "prob": "how to prepare the MODFLOW discretization file",
+   "cat": "How-to / guidance"
+  }
+ },
+ {
+  "id": 20,
+  "ridx": 21,
+  "kind": "resign",
+  "side": "w",
+  "fen": "8/3N1p2/8/5kp1/PP3b2/6p1/5PK1/8 w - - 0 44",
+  "line": [
+   "a4a5",
+   "g3f2",
+   "a5a6"
+  ],
+  "sans": [
+   "a5",
+   "gxf2",
+   "a6"
+  ],
+  "num": 44,
+  "types": [
+   "P",
+   "P"
+  ],
+  "k": 2,
+  "game": {
+   "white": "Praggnanandhaa R",
+   "black": "Abasov, Nijat",
+   "event": "FIDE Candidates 2024",
+   "date": "2024.04.10",
+   "round": "6",
+   "result": "1-0",
+   "site": "Toronto, Canada",
+   "whiteElo": "2747",
+   "blackElo": "2632",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "D32",
+   "opening": "Tarrasch Defense: Symmetrical Variation",
+   "url": "https://lichess.org/broadcast/fide-candidates-2024-open/round-6/kPqEUBZJ/o9OK7nBI"
+  },
+  "start_ply": 86,
+  "reply": {
+   "cls": "D",
+   "lvl": 2,
+   "moves": [
+    "EXP-PROC",
+    "EXP-REFRAME"
+   ],
+   "rungs": [
+    0,
+    0
+   ],
+   "text": "menu path in ModelMuse; attributes are not needed",
+   "prob": "export the MODFLOW grid shapefile with attributes",
+   "cat": "Input / set-up"
+  }
+ },
+ {
+  "id": 21,
+  "ridx": 15,
+  "kind": "resign",
+  "side": "w",
+  "fen": "6k1/2R3p1/2p4p/1p3P2/1P1B1P2/r1P2b1P/6r1/4RK2 w - - 0 37",
+  "line": [
+   "f5f6",
+   "f3d5",
+   "f6f7"
+  ],
+  "sans": [
+   "f6",
+   "Bd5",
+   "f7+"
+  ],
+  "num": 37,
+  "types": [
+   "P",
+   "P"
+  ],
+  "k": 2,
+  "game": {
+   "white": "Giri, Anish",
+   "black": "Warmerdam, Max",
+   "event": "Tata Steel Chess Tournament 2025 Masters",
+   "date": "2025.01.31",
+   "round": "11.1",
+   "result": "1-0",
+   "site": "Wijk aan Zee, Netherlands",
+   "whiteElo": "2731",
+   "blackElo": "2646",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "C50",
+   "opening": "Italian Game: Giuoco Pianissimo, Italian Four Knights Variation",
+   "url": "https://lichess.org/broadcast/tata-steel-chess-2025-masters/round-11/iAu6JSH1/wD2dbF8a"
+  },
+  "start_ply": 72,
+  "reply": {
+   "cls": "D",
+   "lvl": 1,
+   "moves": [
+    "EXP-PRECOND",
+    "RT-DOC"
+   ],
+   "rungs": [
+    0,
+    0
+   ],
+   "text": "lists the inputs; documentation link",
+   "prob": "what data QSWATMOD needs",
+   "cat": "How-to / guidance"
+  }
+ },
+ {
+  "id": 22,
+  "ridx": 0,
+  "kind": "analysis",
+  "side": "w",
+  "fen": "6k1/2B3p1/p1b4p/2b5/P1p1p3/2Nn3P/1PR3PK/8 w - - 5 35",
+  "line": [
+   "a4a5",
+   "g8f7",
+   "c2e2"
+  ],
+  "sans": [
+   "a5",
+   "Kf7",
+   "Re2"
+  ],
+  "num": 35,
+  "types": [
+   "P",
+   "R"
+  ],
+  "k": 2,
+  "game": {
+   "white": "Nepomniachtchi, Ian",
+   "black": "Ding, Liren",
+   "event": "FIDE World Championship Match 2023",
+   "date": "2023.04.27",
+   "round": "13",
+   "result": "1/2-1/2",
+   "site": "Astana KAZ",
+   "whiteElo": "2795",
+   "blackElo": "2788",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "C84",
+   "opening": "Ruy Lopez: Closed, Martinez Variation",
+   "url": "https://lichess.org/broadcast/fide-world-chess-championship-2023/round-13/ogkIZuf5/W1S9KwTm"
+  },
+  "start_ply": 68,
+  "reply": {
+   "cls": "P",
+   "lvl": 1,
+   "moves": [
+    "RT-RELEASE",
+    "Q-VERSION"
+   ],
+   "rungs": [
+    0,
+    3
+   ],
+   "text": "fixed in v2.3.1; asks whether the latest version was installed and tested",
+   "prob": "export modflow.obs fails with a TypeError",
+   "cat": "Plug-in error"
+  }
+ },
+ {
+  "id": 23,
+  "ridx": 12,
+  "kind": "analysis",
+  "side": "b",
+  "fen": "4r1k1/5pp1/4nn2/p1p1pN2/R3P3/1rP4P/5PP1/2B1R1K1 b - - 0 33",
+  "line": [
+   "b3c3",
+   "c1b2",
+   "c3b3"
+  ],
+  "sans": [
+   "Rxc3",
+   "Bb2",
+   "Rb3"
+  ],
+  "num": 33,
+  "types": [
+   null,
+   "R"
+  ],
+  "k": 2,
+  "game": {
+   "white": "Nepomniachtchi, Ian",
+   "black": "Ding, Liren",
+   "event": "FIDE World Championship Match 2023",
+   "date": "2023.04.21",
+   "round": "9",
+   "result": "1/2-1/2",
+   "site": "Astana KAZ",
+   "whiteElo": "2795",
+   "blackElo": "2788",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "C65",
+   "opening": "Ruy Lopez: Berlin Defense, Anti-Berlin Variation",
+   "url": "https://lichess.org/broadcast/fide-world-chess-championship-2023/round-9/FgD0ZXaV/f9tsyjnn"
+  },
+  "start_ply": 65,
+  "reply": {
+   "cls": "A",
+   "lvl": 3,
+   "moves": [
+    "M-SOCIAL",
+    "Q-QUANT"
+   ],
+   "rungs": [
+    3
+   ],
+   "text": "asks the number of river cells and the simulation period including warm-up",
+   "prob": "yearly exchange output has duplicated lines",
+   "cat": "Results interpretation"
+  }
+ },
+ {
+  "id": 24,
+  "ridx": 5,
+  "kind": "analysis",
+  "side": "w",
+  "fen": "r1br2k1/1p2qpp1/4nn1p/pBpp4/3P4/P1N1PP2/1PQ1N1PP/4RRK1 w - - 2 19",
+  "line": [
+   "d4c5",
+   "e7c5",
+   "c2d2"
+  ],
+  "sans": [
+   "dxc5",
+   "Qxc5",
+   "Qd2"
+  ],
+  "num": 19,
+  "types": [
+   null,
+   "Q"
+  ],
+  "k": 2,
+  "game": {
+   "white": "Nepomniachtchi, Ian",
+   "black": "Ding, Liren",
+   "event": "FIDE World Championship Match 2023",
+   "date": "2023.04.12",
+   "round": "3",
+   "result": "1/2-1/2",
+   "site": "Astana KAZ",
+   "whiteElo": "2795",
+   "blackElo": "2788",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "D36",
+   "opening": "Queen's Gambit Declined: Exchange Variation, Reshevsky Variation",
+   "url": "https://lichess.org/broadcast/fide-world-chess-championship-2023/round-3/56p9dDhg/WkpT5kkD"
+  },
+  "start_ply": 36,
+  "reply": {
+   "cls": "A",
+   "lvl": 2,
+   "moves": [
+    "M-REASON",
+    "Q-SETTINGS"
+   ],
+   "rungs": [
+    4
+   ],
+   "text": "share the MODFLOW model settings and parameter values",
+   "prob": "odd water-table elevations compared with ModelMuse",
+   "cat": "Results interpretation"
+  }
+ },
+ {
+  "id": 25,
+  "ridx": 32,
+  "kind": "resign",
+  "side": "b",
+  "fen": "8/8/Q7/8/3q3p/4p2P/4k1P1/7K b - - 1 65",
+  "line": [
+   "e2f2",
+   "h1h2",
+   "e3e2"
+  ],
+  "sans": [
+   "Kf2",
+   "Kh2",
+   "e2"
+  ],
+  "num": 65,
+  "types": [
+   null,
+   "P"
+  ],
+  "k": 2,
+  "game": {
+   "white": "Caruana, Fabiano",
+   "black": "Carlsen, Magnus",
+   "event": "Norway Chess",
+   "date": "2024.05.30",
+   "round": "7.1",
+   "result": "0-1",
+   "site": "Stavanger, Norway",
+   "whiteElo": "2805",
+   "blackElo": "2830",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "C54",
+   "opening": "Italian Game: Classical Variation, Giuoco Pianissimo",
+   "url": "https://lichess.org/broadcast/norway-chess-2024-open/round-4/4JSenCaJ/1dCWZDy0"
+  },
+  "start_ply": 129,
+  "reply": {
+   "cls": "D",
+   "lvl": 3,
+   "moves": [
+    "M-HEDGE",
+    "EXP-LIMIT"
+   ],
+   "rungs": [
+    0
+   ],
+   "text": "not aware of any limit",
+   "prob": "maximum number of wells in MODFLOW",
+   "cat": "How-to / guidance"
+  }
+ },
+ {
+  "id": 26,
+  "ridx": 37,
+  "kind": "midres",
+  "side": "b",
+  "fen": "r2r2k1/1b3ppp/p2b4/1pp5/1n6/1PNP1N1P/1PPB1PP1/R1R2K2 b - - 5 19",
+  "line": [
+   "a8c8",
+   "c3e2",
+   "b4c6",
+   "d2e3",
+   "c6e7",
+   "e3f4",
+   "b7f3",
+   "g2f3",
+   "d6f4"
+  ],
+  "sans": [
+   "Rac8",
+   "Ne2",
+   "Nc6",
+   "Be3",
+   "Ne7",
+   "Bf4",
+   "Bxf3",
+   "gxf3",
+   "Bxf4"
+  ],
+  "num": 19,
+  "types": [
+   null,
+   "N",
+   "N",
+   "B",
+   null
+  ],
+  "k": 5,
+  "game": {
+   "white": "Nepomniachtchi, Ian",
+   "black": "Carlsen, Magnus",
+   "event": "FIDE World Championship Match 2021",
+   "date": "2021.11.26",
+   "round": "1",
+   "result": "1/2-1/2",
+   "site": "Dubai UAE",
+   "whiteElo": "2782",
+   "blackElo": "2855",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "C88",
+   "opening": "Ruy Lopez: Closed",
+   "url": "https://lichess.org/broadcast/world-chess-championship-2021/game-1/olFFWcs6/QiiRpWao"
+  },
+  "start_ply": 37,
+  "reply": {
+   "cls": "D",
+   "lvl": 3,
+   "moves": [
+    "M-RANK",
+    "CHK-SETTING",
+    "CHK-WATERTABLE",
+    "FIX-PARAMS",
+    "M-SELFCORRECT"
+   ],
+   "rungs": [
+    1,
+    1,
+    2
+   ],
+   "text": "tolerance settings in the .nwt or head elevation; check the water table",
+   "prob": "cyclical discharge in some subbasins",
+   "cat": "Results interpretation"
+  }
+ },
+ {
+  "id": 27,
+  "ridx": 47,
+  "kind": "midres",
+  "side": "w",
+  "fen": "r1bqkb1r/pp2pppp/2n2n2/2pp4/3P1B2/4PN2/PPP2PPP/RN1QKB1R w KQkq - 1 5",
+  "line": [
+   "b1d2",
+   "c5d4",
+   "e3d4",
+   "c8f5",
+   "c2c3",
+   "e7e6",
+   "f1b5"
+  ],
+  "sans": [
+   "Nbd2",
+   "cxd4",
+   "exd4",
+   "Bf5",
+   "c3",
+   "e6",
+   "Bb5"
+  ],
+  "num": 5,
+  "types": [
+   null,
+   "P",
+   "P",
+   "B"
+  ],
+  "k": 4,
+  "game": {
+   "white": "Ding, Liren",
+   "black": "Nepomniachtchi, Ian",
+   "event": "FIDE World Championship Match 2023",
+   "date": "2023.04.16",
+   "round": "6",
+   "result": "1-0",
+   "site": "Astana KAZ",
+   "whiteElo": "2788",
+   "blackElo": "2795",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "D02",
+   "opening": "Queen's Pawn Game: London System",
+   "url": "https://lichess.org/broadcast/fide-world-chess-championship-2023/round-6/Teae9PdP/DYYUwnnc"
+  },
+  "start_ply": 8,
+  "reply": {
+   "cls": "D",
+   "lvl": 2,
+   "moves": [
+    "M-SOCIAL",
+    "EXP-LIMIT",
+    "EXP-MECH",
+    "FIX-EDIT"
+   ],
+   "rungs": [
+    0,
+    0,
+    2
+   ],
+   "text": "allowed; extend MODFLOW with dummy years",
+   "prob": "different time steps and periods for SWAT and MODFLOW",
+   "cat": "Coupling / configuration"
+  }
+ },
+ {
+  "id": 28,
+  "ridx": 11,
+  "kind": "midres",
+  "side": "w",
+  "fen": "8/7R/5k2/p3ppp1/Pb1r4/3B2P1/4KP1P/8 w - - 0 42",
+  "line": [
+   "f2f3",
+   "e5e4",
+   "f3e4",
+   "f5e4",
+   "d3b5",
+   "b4e7",
+   "h2h4"
+  ],
+  "sans": [
+   "f3",
+   "e4",
+   "fxe4",
+   "fxe4",
+   "Bb5",
+   "Be7",
+   "h4"
+  ],
+  "num": 42,
+  "types": [
+   "P",
+   "P",
+   "B",
+   "P"
+  ],
+  "k": 4,
+  "game": {
+   "white": "Nakamura, Hikaru",
+   "black": "Gukesh D",
+   "event": "FIDE Candidates 2024",
+   "date": "2024.04.21",
+   "round": "14",
+   "result": "1/2-1/2",
+   "site": "Toronto, Canada",
+   "whiteElo": "2789",
+   "blackElo": "2743",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "D26",
+   "opening": "Queen's Gambit Accepted: Normal Variation, Traditional System",
+   "url": "https://lichess.org/broadcast/fide-candidates-2024-open/round-14/S4zisI6M/JPsDSKMA"
+  },
+  "start_ply": 82,
+  "reply": {
+   "cls": "D",
+   "lvl": 2,
+   "moves": [
+    "EXP-PRECOND",
+    "EXP-LIMIT",
+    "FIX-SWITCH",
+    "RT-DOC"
+   ],
+   "rungs": [
+    0,
+    0,
+    2,
+    0
+   ],
+   "text": "a MODFLOW model is needed; use ModelMuse for several layers",
+   "prob": "build MODFLOW first or follow the manual steps",
+   "cat": "How-to / guidance"
+  }
+ },
+ {
+  "id": 29,
+  "ridx": 45,
+  "kind": "midres",
+  "side": "w",
+  "fen": "rnbqk2r/ppp2ppp/4pn2/3p4/2PP4/P1P5/4PPPP/R1BQKBNR w KQkq - 1 6",
+  "line": [
+   "e2e3",
+   "c7c6",
+   "a3a4",
+   "e8g8",
+   "f1d3",
+   "e6e5",
+   "d4e5"
+  ],
+  "sans": [
+   "e3",
+   "c6",
+   "a4",
+   "O-O",
+   "Bd3",
+   "e5",
+   "dxe5"
+  ],
+  "num": 6,
+  "types": [
+   "P",
+   "P",
+   "B",
+   "P"
+  ],
+  "k": 4,
+  "game": {
+   "white": "Abasov, Nijat",
+   "black": "Caruana, Fabiano",
+   "event": "FIDE Candidates 2024",
+   "date": "2024.04.14",
+   "round": "9",
+   "result": "1/2-1/2",
+   "site": "Toronto, Canada",
+   "whiteElo": "2632",
+   "blackElo": "2803",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "D31",
+   "opening": "Queen's Gambit Declined: Queen's Knight Variation",
+   "url": "https://lichess.org/broadcast/fide-candidates-2024-open/round-9/A7SWsX0x/vFDx9eb1"
+  },
+  "start_ply": 10,
+  "reply": {
+   "cls": "D",
+   "lvl": 2,
+   "moves": [
+    "EXP-PRECOND",
+    "EXP-LIMIT",
+    "FIX-SWITCH",
+    "RT-DOC"
+   ],
+   "rungs": [
+    0,
+    0,
+    2,
+    0
+   ],
+   "text": "create the well package first; QSWATMOD cannot; use ModelMuse",
+   "prob": "error adding the well package in QSWATMOD",
+   "cat": "Input / set-up"
+  }
+ },
+ {
+  "id": 30,
+  "ridx": 42,
+  "kind": "midres",
+  "side": "b",
+  "fen": "r2q1rk1/7p/p2pp1pb/np2p3/2p1P3/P2PN3/BPPQ1PPP/3R1RK1 b - - 3 18",
+  "line": [
+   "a8b8",
+   "d3c4",
+   "a5c4",
+   "a2c4",
+   "b5c4"
+  ],
+  "sans": [
+   "Rb8",
+   "dxc4",
+   "Nxc4",
+   "Bxc4",
+   "bxc4"
+  ],
+  "num": 18,
+  "types": [
+   null,
+   "N",
+   "P"
+  ],
+  "k": 3,
+  "game": {
+   "white": "Nepomniachtchi, Ian",
+   "black": "Ding, Liren",
+   "event": "FIDE World Championship Match 2023",
+   "date": "2023.04.24",
+   "round": "11",
+   "result": "1/2-1/2",
+   "site": "Astana KAZ",
+   "whiteElo": "2795",
+   "blackElo": "2788",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "C84",
+   "opening": "Ruy Lopez: Closed, Martinez Variation",
+   "url": "https://lichess.org/broadcast/fide-world-chess-championship-2023/round-11/EkD3WyXe/GZfhvSKa"
+  },
+  "start_ply": 35,
+  "reply": {
+   "cls": "D",
+   "lvl": 3,
+   "moves": [
+    "M-HEDGE",
+    "CHK-LAYER",
+    "RT-DOC"
+   ],
+   "rungs": [
+    1,
+    0
+   ],
+   "text": "problem with the mf_grid layer; link to add or subtract rows and columns",
+   "prob": "few cells show exchange; odd recharge",
+   "cat": "Results interpretation"
+  }
+ },
+ {
+  "id": 31,
+  "ridx": 48,
+  "kind": "midres",
+  "side": "w",
+  "fen": "1r2rbk1/5pp1/3p2np/1pp1Pq2/3P4/1Q2BN1P/1P3PP1/R1R3K1 w - - 1 22",
+  "line": [
+   "d4c5",
+   "d6c5",
+   "e3c5"
+  ],
+  "sans": [
+   "dxc5",
+   "dxc5",
+   "Bxc5"
+  ],
+  "num": 22,
+  "types": [
+   "P",
+   "B"
+  ],
+  "k": 2,
+  "game": {
+   "white": "Nepomniachtchi, Ian",
+   "black": "Carlsen, Magnus",
+   "event": "FIDE World Championship Match 2021",
+   "date": "2021.12.04",
+   "round": "7",
+   "result": "1/2-1/2",
+   "site": "Dubai UAE",
+   "whiteElo": "2782",
+   "blackElo": "2855",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "C88",
+   "opening": "Ruy Lopez: Closed, Anti-Marshall",
+   "url": "https://lichess.org/broadcast/world-chess-championship-2021/game-7/gHaonHgE/pj0enFPB"
+  },
+  "start_ply": 42,
+  "reply": {
+   "cls": "D",
+   "lvl": 2,
+   "moves": [
+    "EXP-MECH",
+    "FIX-EDIT"
+   ],
+   "rungs": [
+    0,
+    2
+   ],
+   "text": "the run ends at the earlier end date; extend MODFLOW",
+   "prob": "SWAT has 8 years and MODFLOW 5",
+   "cat": "Coupling / configuration"
+  }
+ },
+ {
+  "id": 32,
+  "ridx": 10,
+  "kind": "midres",
+  "side": "b",
+  "fen": "2R5/5pkp/4pp2/pp1q4/1P1b4/P2N2P1/3RPP1P/6K1 b - - 0 28",
+  "line": [
+   "a5a4",
+   "e2e3",
+   "d4e5"
+  ],
+  "sans": [
+   "a4",
+   "e3",
+   "Be5"
+  ],
+  "num": 28,
+  "types": [
+   "P",
+   "B"
+  ],
+  "k": 2,
+  "game": {
+   "white": "Carlsen, Magnus",
+   "black": "Nepomniachtchi, Ian",
+   "event": "FIDE World Championship Match 2021",
+   "date": "2021.12.03",
+   "round": "6",
+   "result": "1-0",
+   "site": "Dubai UAE",
+   "whiteElo": "2855",
+   "blackElo": "2782",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "D02",
+   "opening": "Queen's Pawn Game: Symmetrical Variation, Pseudo-Catalan",
+   "url": "https://lichess.org/broadcast/world-chess-championship-2021/game-6/h7a3P5YF/6OeqL6Ge"
+  },
+  "start_ply": 55,
+  "reply": {
+   "cls": "D",
+   "lvl": 3,
+   "moves": [
+    "INSPECT",
+    "FIX-SWITCH"
+   ],
+   "rungs": [
+    0,
+    2
+   ],
+   "text": "the solver is PCG, not NWT: try NWT",
+   "prob": "forrtl severe (29) file not found, unit 146",
+   "cat": "Run-time failure"
+  }
+ },
+ {
+  "id": 33,
+  "ridx": 23,
+  "kind": "midres",
+  "side": "w",
+  "fen": "r2qrbk1/2p2pp1/3pbn1p/p7/P1NQP3/1BB5/1P3PPP/2R1R1K1 w - - 1 21",
+  "line": [
+   "h2h3",
+   "c7c6",
+   "b3c2",
+   "d6d5",
+   "e4e5"
+  ],
+  "sans": [
+   "h3",
+   "c6",
+   "Bc2",
+   "d5",
+   "e5"
+  ],
+  "num": 21,
+  "types": [
+   "P",
+   "B",
+   "P"
+  ],
+  "k": 3,
+  "game": {
+   "white": "Nepomniachtchi, Ian",
+   "black": "Carlsen, Magnus",
+   "event": "FIDE World Championship Match 2021",
+   "date": "2021.11.28",
+   "round": "3",
+   "result": "1/2-1/2",
+   "site": "Dubai UAE",
+   "whiteElo": "2782",
+   "blackElo": "2855",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "C88",
+   "opening": "Ruy Lopez: Closed, Anti-Marshall",
+   "url": "https://lichess.org/broadcast/world-chess-championship-2021/game-3/Kn3d1MWW/N86qNAdO"
+  },
+  "start_ply": 40,
+  "reply": {
+   "cls": "D",
+   "lvl": 2,
+   "moves": [
+    "EXP-LIMIT",
+    "FIX-SWITCH",
+    "RT-DOC"
+   ],
+   "rungs": [
+    0,
+    2,
+    0
+   ],
+   "text": "the tool builds one layer; use ModelMuse",
+   "prob": "several layers in SWATMOD-prep",
+   "cat": "Input / set-up"
+  }
+ },
+ {
+  "id": 34,
+  "ridx": 43,
+  "kind": "midres",
+  "side": "w",
+  "fen": "rnbqkb1r/ppp2ppp/4pn2/3p4/2PP4/5N2/PP2PPPP/RNBQKB1R w KQkq - 0 4",
+  "line": [
+   "g2g3",
+   "f8e7",
+   "f1g2"
+  ],
+  "sans": [
+   "g3",
+   "Be7",
+   "Bg2"
+  ],
+  "num": 4,
+  "types": [
+   "P",
+   "B"
+  ],
+  "k": 2,
+  "game": {
+   "white": "Carlsen, Magnus",
+   "black": "Nepomniachtchi, Ian",
+   "event": "FIDE World Championship Match 2021",
+   "date": "2021.11.27",
+   "round": "2",
+   "result": "1/2-1/2",
+   "site": "Dubai UAE",
+   "whiteElo": "2855",
+   "blackElo": "2782",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "E05",
+   "opening": "Catalan Opening: Open Defense, Classical Line",
+   "url": "https://lichess.org/broadcast/world-chess-championship-2021/game-2/lmpUPtlv/iRIJCoYJ"
+  },
+  "start_ply": 6,
+  "reply": {
+   "cls": "D",
+   "lvl": 2,
+   "moves": [
+    "EXP-REFRAME",
+    "FIX-SWITCH"
+   ],
+   "rungs": [
+    0,
+    2
+   ],
+   "text": "not a code change; use the .mgt schedule or MODFLOW settings",
+   "prob": "timing of irrigation from pumping",
+   "cat": "Coupling / configuration"
+  }
+ },
+ {
+  "id": 35,
+  "ridx": 50,
+  "kind": "midres",
+  "side": "w",
+  "fen": "r2rb1k1/1pp2pp1/4p3/4P2p/2P3nP/1N4P1/P4PB1/R3R1K1 w - - 0 26",
+  "line": [
+   "g2b7",
+   "a8a4",
+   "c4c5"
+  ],
+  "sans": [
+   "Bxb7",
+   "Ra4",
+   "c5"
+  ],
+  "num": 26,
+  "types": [
+   "B",
+   "P"
+  ],
+  "k": 2,
+  "game": {
+   "white": "Nepomniachtchi, Ian",
+   "black": "Carlsen, Magnus",
+   "event": "FIDE World Championship Match 2021",
+   "date": "2021.12.07",
+   "round": "9",
+   "result": "0-1",
+   "site": "Dubai UAE",
+   "whiteElo": "2782",
+   "blackElo": "2855",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "A13",
+   "opening": "English Opening: Agincourt Defense",
+   "url": "https://lichess.org/broadcast/world-chess-championship-2021/game-9/mOnQPtG7/cuCfhlgA"
+  },
+  "start_ply": 50,
+  "reply": {
+   "cls": "D",
+   "lvl": 2,
+   "moves": [
+    "FIX-EDIT",
+    "EXP-MECH"
+   ],
+   "rungs": [
+    2,
+    0
+   ],
+   "text": "add about 100 days to the MODFLOW period (leap years)",
+   "prob": "exit code 24, end of file on the well file at period 2",
+   "cat": "Run-time failure"
+  }
+ },
+ {
+  "id": 36,
+  "ridx": 26,
+  "kind": "midres",
+  "side": "w",
+  "fen": "5k2/pp1b1pp1/2p2q1r/3p4/3P3p/3BQ2P/PPP2PP1/4R1K1 w - - 0 20",
+  "line": [
+   "c2c4",
+   "d5c4",
+   "d3c4"
+  ],
+  "sans": [
+   "c4",
+   "dxc4",
+   "Bxc4"
+  ],
+  "num": 20,
+  "types": [
+   "P",
+   "B"
+  ],
+  "k": 2,
+  "game": {
+   "white": "Carlsen, Magnus",
+   "black": "Nepomniachtchi, Ian",
+   "event": "FIDE World Championship Match 2021",
+   "date": "2021.12.05",
+   "round": "8",
+   "result": "1-0",
+   "site": "Dubai UAE",
+   "whiteElo": "2855",
+   "blackElo": "2782",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "C43",
+   "opening": "Petrov's Defense: Modern Attack, Center Variation",
+   "url": "https://lichess.org/broadcast/world-chess-championship-2021/game-8/7k0b6co4/TkCFGN7t"
+  },
+  "start_ply": 38,
+  "reply": {
+   "cls": "D",
+   "lvl": 2,
+   "moves": [
+    "RT-RELEASE",
+    "FIX-UPGRADE"
+   ],
+   "rungs": [
+    0,
+    2
+   ],
+   "text": "fixed in v2.3.1; upgrade",
+   "prob": "export modflow.obs TypeError",
+   "cat": "Plug-in error"
+  }
+ },
+ {
+  "id": 37,
+  "ridx": 9,
+  "kind": "midres",
+  "side": "w",
+  "fen": "3r2k1/2pqnpp1/1p5p/p2P4/P2p1rP1/2P1N3/1PQ2PP1/3RR1K1 w - - 3 23",
+  "line": [
+   "g2g3",
+   "d4e3",
+   "g3f4"
+  ],
+  "sans": [
+   "g3",
+   "dxe3",
+   "gxf4"
+  ],
+  "num": 23,
+  "types": [
+   "P",
+   "P"
+  ],
+  "k": 2,
+  "game": {
+   "white": "Nepomniachtchi, Ian",
+   "black": "Carlsen, Magnus",
+   "event": "FIDE World Championship Match 2021",
+   "date": "2021.12.10",
+   "round": "11",
+   "result": "0-1",
+   "site": "Dubai UAE",
+   "whiteElo": "2782",
+   "blackElo": "2855",
+   "whiteTitle": "GM",
+   "blackTitle": "GM",
+   "eco": "C54",
+   "opening": "Italian Game: Classical Variation, Giuoco Pianissimo",
+   "url": "https://lichess.org/broadcast/world-chess-championship-2021/game-11/3QmqMDV7/jwyzuofg"
+  },
+  "start_ply": 44,
+  "reply": {
+   "cls": "D",
+   "lvl": 2,
+   "moves": [
+    "RT-TOOL",
+    "EXP-LIMIT"
+   ],
+   "rungs": [
+    0,
+    0
+   ],
+   "text": "use QSWATMOD instead of SWATMOD-prep; link",
+   "prob": "inputs for an ArcSWAT-MODFLOW project (first post deleted)",
+   "cat": "How-to / guidance"
+  }
+ }
+]

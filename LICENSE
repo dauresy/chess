@@ -1,0 +1,19 @@
+MIT License
+
+Copyright (c) 2026 David Serrano Suarez and Seonggyu Park
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+---
+
+Scope. This MIT licence covers the code: index.html (apart from the library below), source/build_page.py, source/gen_puzzles.py, source/template.html and source/gloss.js.
+
+The text and data written for this project (the paraphrased replies, the takeaways, the plain-language descriptions of the moves and the puzzles in source/data/) are licensed under Creative Commons Attribution 4.0 International (CC BY 4.0): https://creativecommons.org/licenses/by/4.0/ . Credit: the authors listed in CITATION.cff.
+
+Not covered by either licence, and kept under their own terms:
+* chess.js 0.10.3 (BSD-2-Clause, Copyright (c) Jeff Hlywa): see source/vendor/LICENSE-chess.js.txt.
+* The game records (moves, players, ratings, venues, dates and links): official FIDE event broadcasts as published on Lichess. They are facts about public events; this project claims no rights over them.

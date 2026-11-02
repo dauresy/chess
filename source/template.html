@@ -1,0 +1,852 @@
+<title>iHydro Chess: expert replies as chess puzzles</title>
+<link rel="icon" type="image/png" href="/*__FAVICON__*/">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&display=swap">
+<script>/*__CHESSJS__*/</script>
+<style>
+/* Layout: a real chessboard beside the puzzle card (statement, clue, your moves, hints), then the key to the code and its limits.
+   Colour: cool slate neutrals and a blue-grey board; green, amber and red mark right, right-piece-wrong-move and wrong, always with a symbol. */
+:root{
+  color-scheme:dark;
+  --bg:#0B0C0E; --surface:#14161A; --soft:#1B1E23; --ink:#E9EBEE; --muted:#B4BAC2; --line:#2A2E34; --line2:#3B4048;
+  --accent:#0A7F9D; --accent-text:#6FD3EC; --accent-bg:#0F2F38; --pink:#D9628F;
+  --sq-light:#7C909B; --sq-dark:#4A5D68; --pw:#F6F8F9; --pws:#0E1216; --pb:#0E1216; --pbs:#E4EAEE;
+  --ok:#4CC38A; --ok-bg:#11291D; --warn:#E3B04B; --warn-bg:#33290F; --bad:#FF7B72; --bad-bg:#3A1A18; --hint:#6FD3EC; --hint-bg:#0F2F38;
+  --last:rgba(255,214,0,.26); --l1:#F6F8F9; --l1s:#0E1216; --l2:#AEB8BF; --l2s:#0E1216; --l3:#0E1216; --l3s:#E4EAEE;
+  --fam-EXPLAIN:#4DA8E0; --fam-ROUTE:#6CB9E6; --fam-PRESCRIBE:#F08A3E; --fam-REQUEST:#E8B031; --fam-SELF-CHECK:#2FC49B; --fam-INSPECT:#D98BBE; --fam-MANNER:#9AA5AD;
+  --serif:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+}
+:root[data-theme="light"]{
+  color-scheme:light;
+  --bg:#F7F7F5; --surface:#FFFFFF; --soft:#F2F1EC; --ink:#1A1A18; --muted:#595959; --line:#E6E5DF; --line2:#D4D3CB;
+  --accent:#0A7F9D; --accent-text:#07617A; --accent-bg:#E3F4F9;
+  --sq-light:#DCE3E7; --sq-dark:#8EA3AF; --pw:#FFFFFF; --pws:#1B2229; --pb:#1B2229; --pbs:#E9EEF1;
+  --ok:#17784A; --ok-bg:#E2F2E9; --warn:#9A5B00; --warn-bg:#FBEBD0; --bad:#B8322A; --bad-bg:#FBE2DF; --hint:#0B57D0; --hint-bg:#E3ECFB;
+  --last:rgba(255,214,0,.34); --l1:#FFFFFF; --l1s:#1B2229; --l2:#AAB4BB; --l2s:#1B2229; --l3:#1B2229; --l3s:#E9EEF1;
+  --fam-EXPLAIN:#0072B2; --fam-ROUTE:#56B4E9; --fam-PRESCRIBE:#D55E00; --fam-REQUEST:#E69F00; --fam-SELF-CHECK:#009E73; --fam-INSPECT:#CC79A7; --fam-MANNER:#8C8C8C;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--sans);padding-block:28px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:clamp(28px,4.2vw,40px);line-height:1.1}
+h2{font-size:22px;line-height:1.2}
+h3{font-size:17px;line-height:1.3}
+p{margin:0}
+.lede{max-width:66ch;color:var(--muted);margin-top:10px;font-size:16px}
+.eyebrow{font:600 12px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--hint);outline-offset:2px}
+.stage{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);gap:32px;align-items:start}
+@media (max-width:880px){.stage{grid-template-columns:minmax(0,1fr)}}
+.boardcard{display:flex;flex-direction:column;gap:12px;min-width:0}
+.board{width:100%;max-width:640px;height:auto;display:block;border-radius:6px;user-select:none;-webkit-user-select:none}
+.board .sq{cursor:pointer}
+.board text.co{font:600 17px var(--sans);fill:var(--muted)}
+.movebar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.movebar input{flex:1 1 160px;min-width:0;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:8px 10px;font:500 14px var(--mono)}
+.note{font-size:13px;color:var(--muted)}
+.panel{display:flex;flex-direction:column;gap:16px;min-width:0}
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;margin:0 auto}
+.hero .eyebrow{display:inline-block;font:500 12px var(--sans);letter-spacing:.8px;text-transform:uppercase;color:var(--accent-text);background:var(--accent-bg);padding:4px 12px;border-radius:20px;margin:0}
+.hero h1.brand-lockup{display:flex;justify-content:center;margin:2px 0 0;line-height:0}
+.brand-logo{height:96px;width:auto;display:block}
+@media (max-width:560px){.brand-logo{height:72px}}
+.hero .tagline{font-size:19px;font-weight:500;margin:4px 0 0}
+.hero .lead{font-size:15px;color:var(--muted);max-width:70ch;margin:0}
+.keys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1100px;width:100%;margin-top:14px}
+.key{border-top:2px solid var(--accent);padding-top:10px;font-size:13px;line-height:1.45;color:var(--muted);text-align:left;display:flex;flex-direction:column;gap:9px}
+.key .kl{font:600 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--accent-text)}
+.key>b{display:block;color:var(--ink);font-size:15px;line-height:1.3;min-height:2.6em}
+.key p{margin:0;min-height:2.9em}
+.vis{display:grid;gap:4px;align-items:start;min-height:104px}
+.vis.c6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.vis.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.vis.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.vis>span{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;font-size:12px;line-height:1.3;color:var(--muted)}
+.vis .pc{font:normal 38px/1.1 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans',sans-serif;color:var(--ink);font-style:normal}
+.vis em{font:600 12px var(--mono);color:var(--accent-text);font-style:normal}
+.vis strong{color:var(--ink);font-weight:600;font-size:12.5px}
+.vis.c6>span{font:500 12px var(--mono)}
+.arrow{display:flex;justify-content:space-between;font:500 12px var(--sans);color:var(--muted);border-top:1.5px solid var(--line2);position:relative;padding-top:3px;margin-top:-2px}
+.arrow::after{content:"";position:absolute;right:0;top:-5px;border-left:7px solid var(--line2);border-top:4.5px solid transparent;border-bottom:4.5px solid transparent}
+@media (max-width:720px){.keys{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:8px}.key{flex:0 0 84%;scroll-snap-align:start}.key>b,.key p{min-height:0}.hero .lead{font-size:14px}}
+.herocta{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:4px}
+.herocta .note{max-width:52ch}
+@media (max-width:560px){.tile .tb{display:none}.tile{min-height:0}.brand-logo{height:64px}}
+@media (pointer:coarse),(max-width:720px){.fl,.seg button,.btn,.pi,.tile,.frow{min-height:44px}.fl{padding-block:8px}}
+.chooser{display:flex;flex-direction:column;gap:22px;scroll-margin-top:12px}
+.step{display:flex;align-items:center;gap:8px;font:600 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.step b{background:var(--accent);color:#fff;border-radius:50%;width:20px;height:20px;display:inline-grid;place-items:center;font:600 12px var(--mono);letter-spacing:0}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:900px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tile{display:flex;flex-direction:column;gap:7px;text-align:left;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:12px 12px 11px;cursor:pointer;min-height:128px}
+.tile:hover:not([disabled]){border-color:var(--line2)}
+.tile[aria-pressed="true"]{border-color:var(--accent-text);background:var(--accent-bg);box-shadow:inset 0 0 0 1px var(--accent-text)}
+.tile[disabled]{opacity:.38;cursor:default}
+.tile .tl{font:600 16px/1.2 var(--serif)}
+.tile .tb{font-size:12.5px;line-height:1.35;color:var(--muted);flex:1}
+.tile .tm{font:500 12px var(--mono);color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.tile .tm b{color:var(--ink);font-weight:600}
+.stripe{display:flex;height:7px;border-radius:4px;overflow:hidden;gap:1px;background:var(--soft)}
+.stripe i{display:block;height:100%}
+.fl{display:inline-flex;align-items:center;gap:6px;border:1px solid transparent;background:none;border-radius:999px;padding:3px 10px;cursor:pointer;font:500 12.5px var(--sans);color:var(--ink)}
+.fl i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.fl:hover{border-color:var(--line)}
+.fl[aria-pressed="true"]{border-color:var(--c);background:color-mix(in srgb,var(--c) 14%,var(--surface));font-weight:600}
+.fpanel{margin-top:12px;border:1px solid var(--line);border-left:5px solid var(--c);border-radius:8px;background:var(--surface);padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.fpanel h3{font-size:17px}
+.fpanel .def{font-size:14px;max-width:80ch}
+.fpanel .share{font:500 12px var(--mono);color:var(--muted)}
+.fpanel .rows{max-height:300px;overflow:auto}
+.frow{display:grid;grid-template-columns:150px minmax(0,1fr) 190px 150px;gap:4px 14px;align-items:center;padding:7px 4px;border-top:1px solid var(--line);font-size:13.5px;cursor:pointer;border-radius:6px}
+.frow:hover{background:var(--soft)}
+.frow[aria-expanded="true"]{background:var(--soft)}
+.frow .rg{font:500 12px var(--mono);color:var(--muted);white-space:nowrap}
+.frow .rg .g{font:17px/1 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans',sans-serif;color:var(--ink);margin-right:4px}
+.fdet{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 22px;padding:6px 6px 14px;background:var(--soft);border-radius:0 0 6px 6px;font-size:13px}
+.fdet dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 12px}
+.fdet dt{font:600 12px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:2px}
+.fdet dd{margin:0}
+@media (max-width:720px){.fdet{grid-template-columns:minmax(0,1fr)}}
+.cplot{display:flex;flex-direction:column;gap:3px}
+.cplot .r,.cplot .ax{display:grid;grid-template-columns:104px minmax(0,1fr) 46px;gap:8px;align-items:center;font:500 12px var(--mono);color:var(--muted)}
+.cplot .tr{position:relative;height:14px;border-left:1px solid var(--line2);border-bottom:1px solid var(--line)}
+.cplot .ci{position:absolute;top:6px;height:2px;background:var(--muted);opacity:.65}
+.cplot .axl{display:flex;justify-content:space-between;font-size:12px}
+.mk{position:absolute;top:2px;width:10px;height:10px;margin-left:-5px;border:1.5px solid var(--ink);box-sizing:border-box}
+.mk.c{border-radius:50%;background:var(--ink)}
+.mk.s{background:#7A7A7A}
+.mk.d{background:var(--bg);transform:rotate(45deg) scale(.9)}
+.mk.t{border:0;background:#C8C8C8;clip-path:polygon(50% 0,100% 100%,0 100%)}
+.mini{position:relative;display:block;height:30px;border-left:1px solid var(--line2)}
+.mini .mk{width:7px;height:7px;margin-left:-3.5px;border-width:1px}
+.mini .mk.d{transform:rotate(45deg) scale(.85)}
+.clegend{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:12px;color:var(--muted);align-items:center}
+.clegend span{display:inline-flex;align-items:center;gap:6px}
+.clegend .mk{position:static;margin:0;display:inline-block}
+.fhead{display:grid;grid-template-columns:150px minmax(0,1fr) 190px 150px;gap:4px 14px;padding:0 4px 4px;font:600 12px var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:720px){.fhead{display:none}}
+@media (max-width:720px){.frow{grid-template-columns:minmax(0,1fr)}.mini{max-width:200px}}
+.fleg{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center;margin-top:10px;font-size:12px;color:var(--muted)}
+.fleg span{display:inline-flex;align-items:center;gap:5px}
+.fleg i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--line2);border-radius:8px;overflow:hidden}
+.seg button{border:0;border-right:1px solid var(--line);background:var(--surface);color:var(--ink);padding:8px 16px;cursor:pointer;font:600 13px var(--mono)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.qhead{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;margin-bottom:10px}
+.qlist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 10px;max-height:340px;overflow:auto;padding:2px}
+@media (max-width:720px){.qlist{grid-template-columns:minmax(0,1fr)}}
+.th{grid-column:1/-1;font:600 12px var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:8px 0 0}
+.pi{display:flex;width:100%;gap:10px;align-items:baseline;justify-content:space-between;text-align:left;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:8px 10px;cursor:pointer;font:500 14px var(--sans)}
+.pi:hover{border-color:var(--line2)}
+.pi small{font:500 12px var(--mono);color:var(--muted);white-space:nowrap}
+.pi[aria-current="true"]{border-color:var(--accent-text);box-shadow:inset 0 0 0 1px var(--accent-text)}
+.pi[data-r="perfect"]{background:var(--ok-bg);border-color:var(--ok)}
+.pi[data-r="help"]{background:var(--warn-bg);border-color:var(--warn)}
+.pi[data-r="shown"]{background:var(--soft)}
+.bar{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 0}
+.bar .now{font:600 14px var(--sans);flex:1 1 220px;min-width:0}
+.bar .now small{font:500 12px var(--mono);color:var(--muted);margin-left:6px}
+#stage{scroll-margin-top:58px}
+.mchip{display:inline-block;font:600 12px var(--mono);padding:1px 8px;border-radius:6px;border:1.5px solid var(--c);background:color-mix(in srgb,var(--c) 16%,var(--surface));color:var(--ink);white-space:nowrap}
+.score{font:500 12px var(--mono);color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.stmt{font:600 19px/1.3 var(--serif)}
+.game{display:flex;flex-direction:column;gap:6px;border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:var(--soft)}
+.game .pl{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+.game .p{display:inline-flex;gap:6px;align-items:baseline;font-weight:600;font-size:15px}
+.game .p .g{font:18px/1 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans',sans-serif;color:var(--ink)}
+.game .p small{font:500 12px var(--mono);color:var(--muted)}
+.game .vs{color:var(--muted);font-size:13px}
+.game .you{font:600 12px var(--sans);letter-spacing:.07em;text-transform:uppercase;border:1px solid var(--ink);border-radius:999px;padding:1px 7px;align-self:center}
+.game .meta{font-size:13px;color:var(--muted)}
+a{color:var(--hint)}
+.clue{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.clue .lbl{font:600 12px var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-right:2px}
+.pill{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;padding:3px 12px 3px 8px;font:500 13px var(--mono);background:var(--soft)}
+.pill .g{font:22px/1 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans',sans-serif}
+ol.slots{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.slot{display:grid;grid-template-columns:30px 30px minmax(0,1fr) auto;gap:2px 10px;align-items:center;border:1.5px dashed var(--line);border-radius:8px;padding:8px 10px;min-height:44px}
+.slot.next{border:1.5px solid var(--ink)}
+.slot.ok{border:1.5px solid var(--ok);background:var(--ok-bg)}
+.slot.shown{border:1.5px solid var(--line);background:var(--soft)}
+.slot .no{font:600 12px var(--mono);color:var(--muted)}
+.slot .pc{font:24px/1 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans',sans-serif}
+.slot .mv{font:600 14px var(--mono)}
+.slot .why{font:500 12px var(--mono);color:var(--muted);white-space:nowrap}
+.banner{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;border:1.5px solid var(--line);background:var(--soft);border-radius:8px;padding:10px 12px;font-size:14px;min-height:48px}
+.banner .ic{font:700 15px var(--mono);width:20px;text-align:center}
+.banner[data-k="ok"]{background:var(--ok-bg);border-color:var(--ok)} .banner[data-k="ok"] .ic{color:var(--ok)}
+.banner[data-k="near"]{background:var(--warn-bg);border-color:var(--warn)} .banner[data-k="near"] .ic{color:var(--warn)}
+.banner[data-k="bad"]{background:var(--bad-bg);border-color:var(--bad)} .banner[data-k="bad"] .ic{color:var(--bad)}
+.banner[data-k="hint"]{background:var(--hint-bg);border-color:var(--hint)} .banner[data-k="hint"] .ic{color:var(--hint)}
+.ctrls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:8px;padding:7px 14px;cursor:pointer;font-weight:500;font-size:14px}
+.btn.alt{background:var(--surface);color:var(--ink);border-color:var(--line2)}
+.btn:disabled{opacity:.4;cursor:default}
+.reveal{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line);padding-top:14px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:14px;margin:0}
+.kv dt{color:var(--muted);font-size:12px;letter-spacing:.05em;text-transform:uppercase;padding-top:2px}
+.kv dd{margin:0}
+.dec{display:flex;flex-direction:column;gap:10px;border:1px solid var(--line);border-radius:8px;padding:12px}
+.dec .q{font-size:14px}
+.opts{display:flex;flex-wrap:wrap;gap:6px}
+.opt{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 12px;font:600 12.5px var(--mono);cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--ink)}
+.opt[data-s="ok"]{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
+.opt[data-s="bad"]{background:var(--bad-bg);border-color:var(--bad);color:var(--bad)}
+.opt:disabled{cursor:default}
+.dec .fb{font-size:13px;color:var(--muted)}
+table.code{border-collapse:collapse;width:100%;margin-top:14px;font-size:14px}
+table.code th,table.code td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+table.code th{font:600 12px var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.tw{overflow-x:auto}
+.limitsec{max-width:80ch}
+.limits{display:flex;flex-direction:column;gap:10px;margin-top:14px;padding-left:18px}
+footer{color:var(--muted);font-size:13px;max-width:80ch;border-top:1px solid var(--line);padding-top:16px}
+
+.slot[data-clickable="1"]{cursor:pointer}
+.slot.cur{box-shadow:0 0 0 2px var(--ink)}
+.slot .mv .ex{display:block;font:500 12px var(--sans);color:var(--muted);margin-top:2px}
+.mcard{display:grid;grid-template-columns:84px minmax(0,1fr);gap:10px 16px;border:1.5px solid var(--ok);background:var(--surface);border-radius:10px;padding:14px}
+@media (max-width:520px){.mcard{grid-template-columns:minmax(0,1fr)}}
+.mcard .side{display:flex;flex-direction:column;align-items:center;gap:4px}
+.mcard .big{font:68px/1 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans',sans-serif}
+.mcard .lvl{font:600 12px var(--mono);text-align:center;color:var(--muted);line-height:1.3}
+.mcard h4{margin:0;font:600 17px var(--serif);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.mcard h4 .dot{width:11px;height:11px;border-radius:50%;display:inline-block}
+.mcard .ladder{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0 10px}
+.mcard .rung{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line);border-radius:999px;padding:2px 9px 2px 6px;font:500 12px var(--mono);color:var(--muted)}
+.mcard .rung .g{font:15px/1 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans',sans-serif}
+.mcard .rung.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.mcard .kv dd b{font-weight:600}
+
+.ladder6{display:flex;flex-direction:column;gap:2px;border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:12px 14px}
+.ladder6 .hd{font:600 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.ladder6 .lr{display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:center;gap:10px;padding:5px 8px;border-radius:8px;border:1px solid transparent}
+.ladder6 .lr.on{background:var(--soft);border-color:var(--line)}
+.ladder6 .lr .g{font:32px/1 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans',sans-serif;text-align:center;color:var(--ink)}
+.ladder6 .lr b{font-weight:600}
+.ladder6 .lr small{display:block;color:var(--muted);font-size:12.5px;line-height:1.35}
+.ladder6 .lr .n{font:600 12px var(--mono);color:var(--muted);white-space:nowrap}
+.ladder6 .lv{display:flex;flex-wrap:wrap;gap:6px 16px;border-top:1px solid var(--line);margin-top:8px;padding-top:10px;font-size:13px;color:var(--muted)}
+.ladder6 .lv span{display:inline-flex;align-items:center;gap:7px}
+.ladder6 .lv i{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--muted);display:inline-block}
+[style*="text-stroke"]{paint-order:stroke fill}
+
+.askq{border-left:4px solid var(--hint);background:var(--hint-bg);border-radius:0 8px 8px 0;padding:10px 14px;display:flex;flex-direction:column;gap:4px}
+.askq .t{font:600 18px/1.3 var(--serif)}
+.askq .s{font-size:12.5px;color:var(--muted)}
+</style>
+
+<div class="wrap">
+<header class="hero">
+  <div class="eyebrow">Expert moves &middot; chess puzzles</div>
+  <h1 class="brand-lockup"><img class="brand-logo" alt="iHydro Chess" src="/*__LOGO__*/"></h1>
+  <p class="tagline">Learn how an expert answers, one chess puzzle at a time</p>
+  <p class="lead">Each puzzle is a real question from a modelling forum, played as a stretch of a real grandmaster game with as many moves as the expert&rsquo;s reply.</p>
+  <div class="herocta"><button class="btn" id="startNow" type="button">Start with a random puzzle</button><span class="note">No chess? Open any puzzle and press &ldquo;Show solution&rdquo;: each move of the reply comes with its explanation.</span></div>
+  <div class="keys" aria-label="How to read the board">
+    <div class="key">
+      <span class="kl">Piece</span>
+      <b>Bigger piece, more work for the person who asked</b>
+      <div class="vis c6" role="img" aria-label="Pawn 0 read, knight 1 look, bishop 2 try, rook 3 answer, queen 4 file, king 5 project">
+        <span><i class="pc">&#9823;&#xFE0E;</i><em>0</em>read</span><span><i class="pc">&#9822;&#xFE0E;</i><em>1</em>look</span><span><i class="pc">&#9821;&#xFE0E;</i><em>2</em>try</span><span><i class="pc">&#9820;&#xFE0E;</i><em>3</em>answer</span><span><i class="pc">&#9819;&#xFE0E;</i><em>4</em>file</span><span><i class="pc">&#9818;&#xFE0E;</i><em>5</em>project</span>
+      </div>
+      <div class="arrow"><span>less work</span><span>more work</span></div>
+      <p>Each move of the expert&rsquo;s reply is one piece: what that move asks of the person who posted.</p>
+    </div>
+    <div class="key">
+      <span class="kl">Colour</span>
+      <b>Darker piece, deeper knowledge</b>
+      <div class="vis c3" role="img" aria-label="White piece: the manual, level 1. Grey piece: the technician, level 2. Black piece: the specialist, level 3">
+        <span><i class="pc" style="color:var(--l1);-webkit-text-stroke:1px var(--l1s)">&#9823;&#xFE0E;</i><strong>The manual</strong>look it up</span>
+        <span><i class="pc" style="color:var(--l2);-webkit-text-stroke:1px var(--l2s)">&#9823;&#xFE0E;</i><strong>The technician</strong>recognises the case</span>
+        <span><i class="pc" style="color:var(--l3);-webkit-text-stroke:1px var(--l3s)">&#9823;&#xFE0E;</i><strong>The specialist</strong>weighs the evidence, like a doctor</span>
+      </div>
+      <div class="arrow"><span>L1</span><span>L3</span></div>
+      <p>The side you play is the highest level in the reply: White up to the technician, Black if it needed the specialist.</p>
+    </div>
+    <div class="key">
+      <span class="kl">Ending</span>
+      <b>Resign or play on: the kind of reply</b>
+      <div class="vis c2">
+        <span><i class="pc">&#9873;&#xFE0E;</i><strong>The loser resigns</strong>a direct answer: the case is resolved</span>
+        <span><i class="pc">&hellip;</i><strong>The game goes on</strong>the expert asks for something and waits</span>
+      </div>
+      <div class="arrow" style="visibility:hidden"><span>.</span><span>.</span></div>
+      <p>The puzzle has as many moves as the expert&rsquo;s reply.</p>
+    </div>
+  </div>
+</header>
+
+<section class="chooser" id="chooser" aria-label="Choose a question">
+  <div>
+    <div class="step"><b>1</b> What do you want to learn about?</div>
+    <div class="tiles" id="tiles" role="group" aria-label="Topic"></div>
+    <div class="fleg" id="fleg"></div>
+    <div class="fpanel" id="fpanel" hidden></div>
+  </div>
+  <div>
+    <div class="step"><b>2</b> How many moves do you want to play?</div>
+    <div class="seg" id="lenChips" role="group" aria-label="Number of moves"></div>
+  </div>
+  <div>
+    <div class="step"><b>3</b> Pick your question</div>
+    <div class="qhead"><span class="note" id="qcount"></span><button class="btn" id="surprise" type="button">Surprise me</button></div>
+    <div class="qlist" id="pickList"></div>
+  </div>
+</section>
+
+<div class="bar" id="bar">
+  <button class="btn alt" id="chg" type="button">&uarr; Change question</button>
+  <span class="now" id="pickNow">Choose a question</span>
+  <span class="score" id="pickScore"></span>
+</div>
+
+<section class="stage" id="stage" aria-label="Board and puzzle">
+  <div class="boardcard">
+    <svg id="board" class="board" viewBox="0 0 840 840" role="img" aria-label="Chessboard"></svg>
+    <form class="movebar" id="moveForm" autocomplete="off">
+      <input id="moveIn" type="text" inputmode="text" aria-label="Type a move, for example Bxf6+ or e2e4" placeholder="Or type a move: Bxf6+ or e2e4">
+      <button class="btn alt" type="submit">Play</button>
+    </form>
+    <p class="note">Click a piece, then a square. The opponent's real replies are played for you.</p>
+    <div class="ladder6" id="ladder6" aria-label="The cost ladder: what each piece costs the person who asked"></div>
+  </div>
+
+  <div class="panel">
+    <div class="card" id="card">
+      <div class="askq" id="question"></div>
+      <div class="game" id="game"></div>
+      <div>
+        <div class="eyebrow" id="kind" style="margin-bottom:6px"></div>
+        <p class="stmt" id="stmt"></p>
+      </div>
+      <div class="clue" id="clue"></div>
+      <ol class="slots" id="slots"></ol>
+      <div class="banner" id="banner" role="status" aria-live="polite"><span class="ic" id="bIc">i</span><span id="bTx"></span></div>
+      <div class="ctrls">
+        <button class="btn" id="zHint">Hint</button>
+        <button class="btn alt" id="zUndo">Restart</button>
+        <button class="btn alt" id="zShow">Show solution</button>
+        <button class="btn" id="zNext" hidden>Next puzzle</button>
+      </div>
+      <div class="mcard" id="mcard" hidden aria-live="polite"></div>
+      <div class="reveal" id="reveal" hidden></div>
+    </div>
+  </div>
+</section>
+
+<section class="limitsec">
+  <div class="eyebrow">Where it stops</div>
+  <h2>A fit, not a proof</h2>
+  <ul class="limits">
+    <li><b>An illustration, not a tested course.</b> No learning outcome has been measured. The games are real and each stretch matches the costs of the reply piece by piece; that shows the code can be read, not that chess and help threads work alike.</li>
+    <li><b>The 37 replies were chosen for what they teach,</b> not drawn as a sample. The counts, the colour bars and the percentages describe this set, not the group or the forums.</li>
+    <li><b>One expert, one coder.</b> The puzzles come from one expert in one group (57 first replies), coded by one author. That expert also develops QSWATMOD, the tool many of the questions are about, so some replies (use QSWATMOD, a fixed release) are a developer&rsquo;s. In the comparison, SWAT-MODFLOW is that one expert, while SWAT, MODFLOW and APEX each pool several responders, so a difference can be a difference between people and not between communities.</li>
+    <li><b>The words are partly the author&rsquo;s.</b> The three levels were assigned by the author and are exploratory; the manual, the technician and the specialist are an analogy. The takeaways and the definitions of the families are the author&rsquo;s own wording; the author has worked with SWAT-MODFLOW models.</li>
+    <li><b>No engine checks the moves.</b> A puzzle accepts the move the grandmaster played, and another move can be as good. A move with no cost of its own (manner, the promise to look) leaves its piece free.</li>
+    <li><b><span id="nmid">Some</span> direct replies are shown mid-game.</b> A resolved reply should end in a resignation; when no game ends in the right way, the stretch is taken from the middle of a game: the case is resolved, but nobody resigns.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="eyebrow">Where the games come from</div>
+  <h2 id="evTitle">Games</h2>
+  <div class="tw"><table class="code" id="events"><thead><tr><th>Event</th><th>Where</th><th>When</th><th>Puzzles</th></tr></thead><tbody></tbody></table></div>
+</section>
+
+<footer>
+  Games: official FIDE event broadcasts as published on Lichess; players, ratings, venue and dates are those of the game records, and each rating is the one on the date of that game. Replies: first replies of the SWAT-MODFLOW group owner, paraphrased; the group owner is a co-author of this project. Puzzle progress stays in your browser. This page has no relation to FIDE, Lichess or the players, and nothing in it is a judgement on how anyone played. It is an interpretation of the study, not a result.
+</footer>
+</div>
+
+<script>
+const D = /*__DATA__*/null;
+/*__GLOSS__*/
+const PT = { p: 'pawn', n: 'knight', b: 'bishop', r: 'rook', q: 'queen', k: 'king' };
+const RUNG_PT = ['p', 'n', 'b', 'r', 'q', 'k'];
+const RUNG_NAME = ['read', 'look', 'try', 'answer one thing', 'send a file', 'send the project'];
+const GL = { p: '♟︎', n: '♞︎', b: '♝︎', r: '♜︎', q: '♛︎', k: '♚︎' };
+const NS = 'http://www.w3.org/2000/svg';
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const FILES = 'abcdefgh';
+const KORD = { resign: 0, midres: 1, analysis: 2 };
+const KLAB = { resign: 'Resolved', midres: 'Resolved, mid-game', analysis: 'Open' };
+const puzzles = D.puzzles.slice().sort((a, b) => KORD[a.kind] - KORD[b.kind] || a.k - b.k || a.id - b.id);
+const byMove = Object.fromEntries(D.moves.map(m => [m.id, m]));
+let results = {};
+try { results = JSON.parse(localStorage.getItem('crp_results_v1') || '{}') || {}; } catch (e) { results = {}; }
+const saveResults = () => { try { localStorage.setItem('crp_results_v1', JSON.stringify(results)); } catch (e) {} };
+
+const S = { len: 0, topic: '', fam: '', i: 0, chess: null, ply: 0, done: 0, misses: 0, hints: 0, hintLevel: 0, sel: null, targets: [], busy: false, finished: false, shown: false, msg: null, last: null, flash: null, timer: null, decoded: [], focus: null };
+const P = () => puzzles[S.i];
+const solverColor = () => P().side;
+const sideName = c => c === 'w' ? 'White' : 'Black';
+const plural = (n, w, suf) => n + ' ' + w + (n === 1 ? '' : (suf || 's'));
+const lang = { w: 'White', b: 'Black' };
+
+const SITE = { 'Astana KAZ': 'Astana, Kazakhstan', 'Dubai UAE': 'Dubai, United Arab Emirates' };
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const siteName = x => SITE[x] || x;
+const fmtDate = d => { const a = String(d).split('.'); return a.length === 3 ? (+a[2]) + ' ' + MONTHS[+a[1] - 1] + ' ' + a[0] : d; };
+const fmtRound = r => /^\d+\.\d+$/.test(r) ? 'round ' + r.split('.')[0] + ', board ' + r.split('.')[1] : 'round ' + r;
+const surname = n => String(n).split(',')[0];
+function who(g, c){
+  const name = c === 'w' ? g.white : g.black, elo = c === 'w' ? g.whiteElo : g.blackElo, ti = c === 'w' ? g.whiteTitle : g.blackTitle;
+  return { name, extra: [ti, elo].filter(Boolean).join(' ') };
+}
+function gameHtml(p){
+  const g = p.game, w = who(g, 'w'), b = who(g, 'b');
+  const one = (x, c) => '<span class="p"><span class="g" aria-hidden="true">' + (c === 'w' ? '\u2654\uFE0E' : '\u265A\uFE0E') + '</span>' + esc(x.name) + (x.extra ? ' <small>' + esc(x.extra) + '</small>' : '') + '</span>' + (p.side === c ? '<span class="you">you play ' + (c === 'w' ? 'White' : 'Black') + '</span>' : '');
+  const meta = [g.event, siteName(g.site), fmtRound(g.round), fmtDate(g.date)].filter(Boolean).join(' \u00b7 ') + (g.opening ? ' \u00b7 ' + g.opening + (g.eco ? ' (' + g.eco + ')' : '') : '') + (g.whiteElo || g.blackElo ? ' · ratings on the date of the game' : '');
+  return '<div class="pl">' + one(w, 'w') + '<span class="vs">vs</span>' + one(b, 'b') + '</div><div class="meta">' + esc(meta) + '</div>';
+}
+function renderEvents(){
+  const by = {};
+  puzzles.forEach(q => {
+    let key = q.game.event.replace(' Rapid Tie-break', '');
+    if (!/\d{4}/.test(key)) key += ' ' + q.game.date.slice(0, 4);
+    const e = by[key] = by[key] || { site: siteName(q.game.site), dates: [], n: 0 };
+    e.dates.push(q.game.date); e.n++;
+  });
+  const rows = Object.entries(by).sort((a, b) => a[1].dates.slice().sort()[0] < b[1].dates.slice().sort()[0] ? -1 : 1);
+  const tb = document.querySelector('#events tbody'); tb.innerHTML = '';
+  rows.forEach(([k, e]) => {
+    const d = e.dates.slice().sort(), a = fmtDate(d[0]), z = fmtDate(d[d.length - 1]);
+    const tr = document.createElement('tr');
+    tr.innerHTML = '<td>' + esc(k) + '</td><td>' + esc(e.site) + '</td><td>' + (a === z ? esc(a) : esc(a) + ' to ' + esc(z)) + '</td><td>' + e.n + '</td>';
+    tb.appendChild(tr);
+  });
+  const years = puzzles.map(q => +q.game.date.slice(0, 4));
+  $('evTitle').textContent = rows.length + ' events, ' + Math.min(...years) + ' to ' + Math.max(...years);
+}
+
+function pill(t){
+  if (!t) return '<span class="pill"><span class="g">\u25C7</span>free move</span>';
+  const l = t.toLowerCase();
+  return '<span class="pill"><span class="g">' + GL[l] + '</span>' + (l === 'k' ? 'king or castling' : PT[l]) + '</span>';
+}
+
+function pgn(p, sans, upto){
+  let out = '', num = p.num;
+  const whiteFirst = p.side === 'w';
+  sans.slice(0, upto).forEach((s, i) => {
+    const whitePly = (i % 2 === 0) === whiteFirst;
+    if (whitePly) out += num + '. ';
+    else if (i === 0) out += num + '... ';
+    out += s + ' ';
+    if (!whitePly) num++;
+  });
+  return out.trim();
+}
+
+function startPuzzle(i){
+  clearTimeout(S.timer);
+  const p = puzzles[i];
+  S.revealAll = false;
+  Object.assign(S, { i, chess: new Chess(p.fen), ply: 0, done: 0, misses: 0, hints: 0, hintLevel: 0, sel: null, targets: [], busy: false, finished: false, shown: false, last: null, flash: null, decoded: [], focus: null });
+  const k = p.k;
+  S.msg = { k: 'info', ic: 'i', t: lang[p.side] + ' to play. Find the ' + (k === 1 ? 'move' : k + ' moves') + '; the replies are played for you.' };
+  render();
+}
+
+function flip(){ return P().side === 'b'; }
+function sqXY(sq){
+  const f = FILES.indexOf(sq[0]), r = +sq[1] - 1;
+  return flip() ? [(7 - f) * 100 + 20, r * 100 + 20] : [f * 100 + 20, (7 - r) * 100 + 20];
+}
+
+function drawBoard(){
+  const svg = $('board'), ch = S.chess, p = P();
+  let s = '';
+  for (let r = 0; r < 8; r++) for (let f = 0; f < 8; f++){
+    const sq = FILES[f] + (r + 1), [x, y] = sqXY(sq), dark = (f + r) % 2 === 0;
+    s += '<rect class="sq" data-sq="' + sq + '" x="' + x + '" y="' + y + '" width="100" height="100" style="fill:var(' + (dark ? '--sq-dark' : '--sq-light') + ')"/>';
+    if (S.last && (S.last[0] === sq || S.last[1] === sq)) s += '<rect x="' + x + '" y="' + y + '" width="100" height="100" style="fill:var(--last);pointer-events:none"/>';
+    if (S.sel === sq) s += '<rect x="' + (x + 3) + '" y="' + (y + 3) + '" width="94" height="94" rx="4" fill="none" style="stroke:var(--hint);pointer-events:none" stroke-width="6"/>';
+    if (S.hintLevel >= 1 && S.hintFrom === sq) s += '<rect x="' + (x + 3) + '" y="' + (y + 3) + '" width="94" height="94" rx="4" fill="none" style="stroke:var(--hint);pointer-events:none" stroke-width="6" stroke-dasharray="14 8"/>';
+    if (S.hintLevel >= 2 && S.hintTo === sq) s += '<rect x="' + (x + 3) + '" y="' + (y + 3) + '" width="94" height="94" rx="4" fill="none" style="stroke:var(--hint);pointer-events:none" stroke-width="6" stroke-dasharray="14 8"/>';
+    if (S.flash && S.flash.sq === sq){
+      const col = S.flash.k === 'ok' ? 'var(--ok)' : S.flash.k === 'near' ? 'var(--warn)' : 'var(--bad)';
+      s += '<rect x="' + (x + 3) + '" y="' + (y + 3) + '" width="94" height="94" rx="4" fill="none" style="stroke:' + col + ';pointer-events:none" stroke-width="8"/>';
+      s += '<text x="' + (x + 92) + '" y="' + (y + 30) + '" text-anchor="end" font-size="30" font-weight="700" style="font-family:var(--mono);fill:' + col + ';paint-order:stroke;stroke:var(--surface);stroke-width:5px;pointer-events:none">' + (S.flash.k === 'ok' ? '✓' : S.flash.k === 'near' ? '~' : '✕') + '</text>';
+    }
+    const pc = ch.get(sq);
+    if (pc){
+      const white = pc.color === 'w';
+      s += '<text x="' + (x + 50) + '" y="' + (y + 76) + '" text-anchor="middle" font-size="84" style="pointer-events:none;font-family:\'Segoe UI Symbol\',\'Apple Symbols\',\'Noto Sans Symbols 2\',\'DejaVu Sans\',sans-serif;fill:var(' + (white ? '--pw' : '--pb') + ');stroke:var(' + (white ? '--pws' : '--pbs') + ')" stroke-width="2.6" paint-order="stroke" stroke-linejoin="round">' + GL[pc.type] + '</text>';
+    }
+    if (S.targets.includes(sq)){
+      s += pc ? '<circle cx="' + (x + 50) + '" cy="' + (y + 50) + '" r="44" fill="none" style="stroke:var(--hint);pointer-events:none" stroke-width="6" opacity=".8"/>' : '<circle cx="' + (x + 50) + '" cy="' + (y + 50) + '" r="14" style="fill:var(--hint);pointer-events:none" opacity=".75"/>';
+    }
+  }
+  for (let i = 0; i < 8; i++){
+    const f = flip() ? 7 - i : i, r = flip() ? i : 7 - i;
+    s += '<text class="co" x="' + (i * 100 + 70) + '" y="836">' + FILES[f] + '</text>';
+    s += '<text class="co" x="4" y="' + (i * 100 + 40) + '">' + (r + 1) + '</text>';
+  }
+  svg.innerHTML = s;
+}
+
+function cap(t){ return t.charAt(0).toUpperCase() + t.slice(1); }
+const TOPIC = {
+  'Calibration / method': { label: 'Calibration and method', blurb: 'How to calibrate and which approach to take.' },
+  'Coupling / configuration': { label: 'Coupling the models', blurb: 'Time steps, periods, pumping and how SWAT and MODFLOW are linked.' },
+  'How-to / guidance': { label: 'How do I\u2026?', blurb: 'Which tool or steps to use to build or run a model.' },
+  'Input / set-up': { label: 'Setting up inputs', blurb: 'Preparing the files and layers the tools need.' },
+  'Plug-in error': { label: 'Plug-in bugs', blurb: 'Errors thrown by the plug-in and what fixes them.' },
+  'Results interpretation': { label: 'Reading the results', blurb: 'What the outputs mean and when they look odd.' },
+  'Run-time failure': { label: 'Crashes when running', blurb: 'Run-time errors and how an expert narrows them down.' }
+};
+const FAMS = ['EXPLAIN', 'ROUTE', 'PRESCRIBE', 'REQUEST', 'SELF-CHECK', 'INSPECT', 'MANNER'];
+const FAMLAB = { 'EXPLAIN': 'Explain', 'ROUTE': 'Route', 'PRESCRIBE': 'Prescribe', 'REQUEST': 'Request', 'SELF-CHECK': 'Self-check', 'INSPECT': 'Inspect', 'MANNER': 'Manner' };
+const FAMDEF = {
+  'EXPLAIN': 'The expert explains: how the model works, a limit of the tool, a prerequisite or what is really being asked. The person only has to read.',
+  'ROUTE': 'The expert points elsewhere: the documentation, a release, a tool or an earlier thread, or promises to look at the files. Reading, or no cost at all.',
+  'PRESCRIBE': 'The expert says what to do: edit a setting, switch tool or solver, change parameters, upgrade. The person has to try it.',
+  'REQUEST': 'The expert asks for something before answering: a message, one file, the settings or the whole project. The cost climbs from answering one question to sending the project.',
+  'SELF-CHECK': 'The expert tells the person what to look at by themselves: a listing, a layer, a setting. The person has to look.',
+  'INSPECT': 'The expert reads the project themselves. It is the only move in which the expert does the looking, and it is rare.',
+  'MANNER': 'A move with no cost of its own: a condition, a hedge, a reason, a courtesy. It sets the tone in which the rest of the reply is read.'
+};
+const topicLabel = c => (TOPIC[c] || { label: c || 'Other' }).label;
+const topicOf = q => q.reply.cat || 'Other';
+const lenKey = k => Math.min(k, 5);
+const lenLab = k => k >= 5 ? '5+' : String(k);
+const lenText = k => k >= 5 ? '5 or more moves' : plural(k, 'move');
+const mchip = id => '<span class="mchip" style="--c:var(--fam-' + (byMove[id] ? byMove[id].fam : 'MANNER') + ')">' + esc(id) + '</span>';
+function filtered(){ return puzzles.map((q, i) => i).filter(i => (!S.len || lenKey(puzzles[i].k) === S.len) && (!S.topic || topicOf(puzzles[i]) === S.topic)); }
+function stripe(set){
+  const n = {}; let tot = 0;
+  set.forEach(q => q.reply.moves.forEach(id => { const f = byMove[id] ? byMove[id].fam : 'MANNER'; n[f] = (n[f] || 0) + 1; tot++; }));
+  return '<span class="stripe" aria-hidden="true">' + FAMS.filter(f => n[f]).map(f => '<i style="width:' + (100 * n[f] / tot).toFixed(1) + '%;background:var(--fam-' + f + ')"></i>').join('') + '</span>';
+}
+const CM = D.comm, COMMS = CM.communities, AX = 0.6;
+const MK = { 'SWAT-MODFLOW': 'c', 'SWAT': 's', 'MODFLOW': 'd', 'APEX': 't' };
+const cpos = x => (100 * Math.min(x, AX) / AX).toFixed(2) + '%';
+function pooled(id){ const d = CM.moves[id]; let k = 0, n = 0; COMMS.forEach(c => { k += d[c][0]; n += CM.n[c]; }); return k / n; }
+function commPlot(id){
+  const d = CM.moves[id]; if (!d) return '';
+  return '<div class="cplot">' + COMMS.map(c => {
+    const k = d[c][0], lo = parseFloat(cpos(d[c][1])), hi = parseFloat(cpos(d[c][2]));
+    return '<div class="r"><span>' + c + '</span><span class="tr"><span class="ci" style="left:' + lo + '%;width:' + (hi - lo).toFixed(2) + '%"></span><span class="mk ' + MK[c] + '" style="left:' + cpos(k / CM.n[c]) + '"></span></span><span>' + k + '/' + CM.n[c] + '</span></div>';
+  }).join('') + '<div class="ax"><span></span><span class="axl"><span>0%</span><span>' + Math.round(AX * 100) + '%</span></span><span></span></div></div>';
+}
+function commMini(id){
+  const d = CM.moves[id], tip = COMMS.map(c => c + ' ' + d[c][0] + ' of ' + CM.n[c]).join(', ');
+  return '<span class="mini" title="' + esc(tip) + '" aria-hidden="true">' + COMMS.map((c, i) => '<span class="mk ' + MK[c] + '" style="top:' + (1 + i * 7) + 'px;left:' + cpos(d[c][0] / CM.n[c]) + '"></span>').join('') + '</span>';
+}
+const commLegend = () => '<div class="clegend">' + COMMS.map(c => '<span><i class="mk ' + MK[c] + '"></i>' + c + (c === 'SWAT-MODFLOW' ? ' (one expert, source of the puzzles)' : ' (several responders)') + '</span>').join('') + '</div>';
+function renderFam(set){
+  const box = $('fpanel');
+  if (!S.fam){ box.hidden = true; return; }
+  const f = S.fam, ms = D.moves.filter(m => m.fam === f).sort((x, y) => pooled(y.id) - pooled(x.id));
+  let tot = 0, mine = 0;
+  set.forEach(q => q.reply.moves.forEach(id => { tot++; if (byMove[id] && byMove[id].fam === f) mine++; }));
+  box.hidden = false; box.style.setProperty('--c', 'var(--fam-' + f + ')');
+  box.innerHTML = '<h3>' + FAMLAB[f] + ' <span class="note">\u00b7 ' + plural(ms.length, 'move') + ' in the code</span></h3><p class="def">' + esc(FAMDEF[f]) + '</p>' +
+    '<p class="share">' + (tot ? 'In the questions listed below: ' + mine + ' of ' + tot + ' moves (' + Math.round(100 * mine / tot) + '%) are ' + FAMLAB[f] + '.' : '') + '</p>' +
+    commLegend() +
+    '<div class="fhead"><span>Most used first</span><span>What it is</span><span>Piece: cost to the asker</span><span>Share of replies, 0\u201360%</span></div><div class="rows">' +
+    ms.map(m => '<div class="frow" role="button" tabindex="0" aria-expanded="false" data-id="' + esc(m.id) + '">' + mchip(m.id) + '<span>' + esc(GLOSS[m.id]) + '</span><span class="rg">' + (m.rung === null ? '<span class="g">\u25C7</span>free move' : '<span class="g">' + GL[RUNG_PT[m.rung]] + '</span>' + m.rung + ' ' + RUNG_NAME[m.rung]) + '</span>' + commMini(m.id) + '</div>' +
+      '<div class="fdet" hidden><div><dl><dt>Doubt it removes</dt><dd>' + esc(m.red || '') + '</dd><dt>When the expert uses it</dt><dd>' + esc(m.trg || '') + '.</dd>' + (m.ex ? '<dt>Example</dt><dd>\u201c' + esc(m.ex) + '\u201d</dd>' : '') + '</dl></div><div>' + commPlot(m.id) + '</div></div>').join('') + '</div>' +
+    '<p class="note">Click a move to see it in the four communities. Each dot is the share of the first replies read in that community that contain the move; the four are coded with the same 42 moves, and the puzzles come only from SWAT-MODFLOW. SWAT-MODFLOW is one expert; the other three pool several responders, so a difference can be between people. The piece is what the move costs the person who asked.</p>';
+  box.querySelectorAll('.frow').forEach(r => {
+    const toggle = () => { const d = r.nextElementSibling, open = d.hidden; d.hidden = !open; r.setAttribute('aria-expanded', String(open)); };
+    r.onclick = toggle; r.onkeydown = e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); } };
+  });
+}
+function renderPicker(){
+  $('nmid').textContent = puzzles.filter(q => q.kind === 'midres').length + ' of ' + puzzles.length;
+  const inLen = q => !S.len || lenKey(q.k) === S.len, inTopic = q => !S.topic || topicOf(q) === S.topic;
+  const topics = [...new Set(puzzles.map(topicOf))].sort((a, b) => topicLabel(a).localeCompare(topicLabel(b)));
+  const tiles = $('tiles'); tiles.innerHTML = '';
+  [''].concat(topics).forEach(c => {
+    const set = puzzles.filter(q => inLen(q) && (!c || topicOf(q) === c));
+    const b = document.createElement('button'); b.className = 'tile'; b.type = 'button';
+    b.disabled = !set.length; b.setAttribute('aria-pressed', String((S.topic || '') === c));
+    const ks = set.map(q => q.k), lo = Math.min(...ks), hi = Math.max(...ks);
+    const solved = set.filter(q => results[q.id] && results[q.id].r !== 'shown').length;
+    b.innerHTML = '<span class="tl">' + esc(c ? topicLabel(c) : 'All topics') + '</span><span class="tb">' + esc(c ? TOPIC[c].blurb : 'Every question, from quick checks to long exchanges.') + '</span>' + stripe(set) +
+      '<span class="tm"><span><b>' + set.length + '</b> ' + (set.length === 1 ? 'question' : 'questions') + '</span><span>' + (set.length ? (lo === hi ? plural(lo, 'move') : lo + '\u2013' + hi + ' moves') : '') + '</span></span>';
+    b.setAttribute('aria-label', (c ? topicLabel(c) : 'All topics') + ', ' + set.length + ' questions, ' + solved + ' solved');
+    b.onclick = () => { S.topic = c; renderPicker(); };
+    tiles.appendChild(b);
+  });
+  const fleg = $('fleg'); fleg.innerHTML = '<span>The bar shows the moves in these questions (' + puzzles.length + ' chosen replies, not a sample). Click a colour to see them:</span>';
+  FAMS.forEach(f => {
+    const b = document.createElement('button'); b.className = 'fl'; b.type = 'button'; b.style.setProperty('--c', 'var(--fam-' + f + ')');
+    b.setAttribute('aria-pressed', String(S.fam === f)); b.setAttribute('aria-controls', 'fpanel');
+    b.innerHTML = '<i style="background:var(--fam-' + f + ')"></i>' + FAMLAB[f];
+    b.onclick = () => { S.fam = S.fam === f ? '' : f; renderPicker(); };
+    fleg.appendChild(b);
+  });
+  renderFam(puzzles.filter(q => inLen(q) && inTopic(q)));
+  const seg = $('lenChips'); seg.innerHTML = '';
+  [0].concat([2, 3, 4, 5]).filter(k => k === 0 || k === S.len || puzzles.some(q => inTopic(q) && lenKey(q.k) === k)).forEach(k => {
+    const n = puzzles.filter(q => inTopic(q) && (!k || lenKey(q.k) === k)).length;
+    const b = document.createElement('button'); b.type = 'button';
+    b.textContent = (k ? lenLab(k) : 'Any') + ' (' + n + ')';
+    b.setAttribute('aria-label', (k ? lenText(k) : 'Any number of moves') + ', ' + n + ' questions');
+    b.setAttribute('aria-pressed', String((S.len || 0) === k));
+    b.onclick = () => { S.len = k; renderPicker(); };
+    seg.appendChild(b);
+  });
+  const idx = filtered(), cats = {};
+  idx.forEach(i => { const c = topicOf(puzzles[i]); (cats[c] = cats[c] || []).push(i); });
+  $('qcount').textContent = idx.length + (idx.length === 1 ? ' question' : ' questions') + (S.topic ? ' in ' + topicLabel(S.topic) : '') + (S.len ? ' with ' + lenText(S.len) : '');
+  const list = $('pickList'); list.innerHTML = '';
+  Object.keys(cats).sort((a, b) => topicLabel(a).localeCompare(topicLabel(b))).forEach(c => {
+    if (!S.topic){ const h = document.createElement('div'); h.className = 'th'; h.textContent = topicLabel(c) + ' \u00b7 ' + plural(cats[c].length, 'question'); list.appendChild(h); }
+    cats[c].sort((x, y) => puzzles[x].k - puzzles[y].k || x - y).forEach(i => {
+      const q = puzzles[i], r = results[q.id];
+      const b = document.createElement('button'); b.className = 'pi'; b.type = 'button';
+      if (r) b.dataset.r = r.r;
+      if (i === S.i) b.setAttribute('aria-current', 'true');
+      b.innerHTML = '<span>' + esc(cap(q.reply.prob)) + '</span><small>' + plural(q.k, 'move') + ' \u00b7 ' + esc(KLAB[q.kind].toLowerCase()) + '</small>';
+      b.setAttribute('aria-label', cap(q.reply.prob) + ', ' + plural(q.k, 'move') + ', ' + KLAB[q.kind].toLowerCase());
+      b.onclick = () => goTo(i);
+      list.appendChild(b);
+    });
+  });
+  if (!idx.length) list.textContent = 'No question has this topic and this many moves: change one of them.';
+  $('surprise').disabled = !idx.length;
+  const q = P();
+  $('pickNow').innerHTML = q ? 'Question ' + (S.i + 1) + ' of ' + puzzles.length + '<small>' + esc(topicLabel(topicOf(q))) + ' \u00b7 ' + plural(q.k, 'move') + '</small>' : 'Choose a question';
+  $('pickScore').textContent = 'Solved ' + puzzles.filter(x => results[x.id] && results[x.id].r !== 'shown').length + ' of ' + puzzles.length;
+}
+function goTo(i){ startPuzzle(i); $('stage').scrollIntoView({ block: 'start', behavior: 'smooth' }); }
+
+function render(){
+  const p = P(), k = p.k, over = S.finished || S.shown;
+  renderPicker();
+  // statement
+  $('question').innerHTML = '<div class="eyebrow" style="margin:0">The question in the Google group</div><div class="t">' + esc(p.reply.prob.charAt(0).toUpperCase() + p.reply.prob.slice(1)) + '</div><div class="s">' + esc(topicLabel(p.reply.cat)) + ' \u00b7 SWAT-MODFLOW group \u00b7 paraphrased \u00b7 the expert answered in ' + plural(p.k, 'move') + ': reconstruct them below</div>';
+  $('game').innerHTML = gameHtml(p);
+  $('kind').textContent = 'Puzzle ' + (S.i + 1) + ' of ' + puzzles.length + ' · ' + KLAB[p.kind].toLowerCase() + ' reply' + ' · ' + plural(k, 'move');
+  const loser = p.side === 'w' ? 'Black' : 'White';
+  $('stmt').textContent = p.kind === 'resign'
+    ? lang[p.side] + ' to play. ' + loser + ' resigns in ' + plural(k, 'move') + '.'
+    : lang[p.side] + ' to play. Find the next ' + plural(k, 'move') + '; ' + (p.kind === 'midres' ? 'nobody resigns here, the game goes on.' : 'the game goes on.');
+  // clue
+  const cl = $('clue');
+  cl.innerHTML = '<span class="lbl">Clue: the pieces that move, in order</span>' + p.types.map(pill).join('<span style="color:var(--muted)">\u2192</span>');
+  // slots
+  const ol = $('slots'); ol.innerHTML = '';
+  const solverSans = p.sans.filter((_, i) => i % 2 === 0);
+  const exMoves = p.reply.moves;
+  for (let j = 0; j < k; j++){
+    const li = document.createElement('li'); li.className = 'slot';
+    const t = p.types[j] ? p.types[j].toLowerCase() : null;
+    const em = byMove[exMoves[j]];
+    const known = j < S.done || S.shown;
+    let inner = '<span class="no">' + (j + 1) + '.</span><span class="pc"' + (known && em ? ' style="color:var(--l' + em.lvl + ');-webkit-text-stroke:1px var(--l' + em.lvl + 's)"' : '') + '>' + (t ? GL[t] : '\u25C7') + '</span>';
+    if (known){
+      li.classList.add(j < S.done ? 'ok' : 'shown'); li.dataset.clickable = '1';
+      if (S.focus === j) li.classList.add('cur');
+      inner += '<span class="mv">' + esc(solverSans[j]) + '<span class="ex">\u2192 ' + mchip(exMoves[j]) + '</span></span><span class="why">' + (j < S.done ? '\u2713' : 'shown') + '</span>';
+    } else {
+      if (j === S.done) li.classList.add('next');
+      inner += '<span class="mv" style="color:var(--muted);font-weight:500">' + (j === S.done ? 'your move' : '\u2026') + '</span><span></span>';
+    }
+    li.innerHTML = inner;
+    if (known) li.onclick = () => { S.focus = j; render(); };
+    ol.appendChild(li);
+  }
+  renderMoveCard();
+  $('bIc').textContent = S.msg.ic; $('bTx').textContent = S.msg.t; $('banner').dataset.k = S.msg.k;
+  $('zHint').disabled = over || S.busy; $('zHint').textContent = S.hintLevel ? 'Hint (' + S.hintLevel + '/3)' : 'Hint';
+  $('zShow').disabled = over; $('zNext').hidden = !over;
+  $('zUndo').disabled = S.busy;
+  drawBoard();
+  renderLadder();
+  renderReveal();
+}
+
+function onSquare(sq){
+  if (S.busy || S.finished || S.shown) return;
+  const pc = S.chess.get(sq);
+  if (S.sel && S.targets.includes(sq)){ attempt(S.sel, sq); return; }
+  if (pc && pc.color === solverColor()){
+    S.sel = sq;
+    S.targets = S.chess.moves({ square: sq, verbose: true }).map(m => m.to);
+  } else { S.sel = null; S.targets = []; }
+  render();
+}
+
+function attempt(from, to, promo){
+  const p = P(), exp = p.line[S.ply];
+  const piece = S.chess.get(from);
+  S.sel = null; S.targets = [];
+  if (!piece) return;
+  const want = p.types[S.done] ? p.types[S.done].toLowerCase() : null;
+  clearTimeout(S.timer);
+  if (exp.slice(0, 4) === from + to){
+    const mv = S.chess.move({ from, to, promotion: exp[4] || promo || 'q' });
+    S.ply++; S.done++; S.focus = S.done - 1; S.last = [from, to]; S.hintLevel = 0; S.hintFrom = S.hintTo = null;
+    S.flash = { sq: to, k: 'ok' };
+    if (S.done === p.k){ finishPuzzle(); return; }
+    S.busy = true;
+    S.msg = { k: 'ok', ic: '✓', t: 'Correct: ' + mv.san + ' stands for ' + p.reply.moves[S.done - 1] + ', move ' + S.done + ' of the expert’s reply. ' + lang[solverColor() === 'w' ? 'b' : 'w'] + ' replies.' };
+    render();
+    S.timer = setTimeout(() => {
+      const u = p.line[S.ply];
+      const r = S.chess.move({ from: u.slice(0, 2), to: u.slice(2, 4), promotion: u[4] || 'q' });
+      S.ply++; S.last = [u.slice(0, 2), u.slice(2, 4)]; S.busy = false; S.flash = null;
+      S.msg = { k: 'info', ic: 'i', t: lang[solverColor() === 'w' ? 'b' : 'w'] + ' played ' + r.san + '. Move ' + (S.done + 1) + ' of ' + p.k + '.' };
+      render();
+    }, 750);
+    return;
+  }
+  S.misses++;
+  if (want && piece.type !== want){
+    S.flash = { sq: to, k: 'bad' };
+    S.msg = { k: 'bad', ic: '\u2715', t: 'The clue says ' + (want === 'k' ? 'the king moves or castles' : 'a ' + PT[want] + ' moves') + ' here; you moved a ' + PT[piece.type] + '.' };
+  } else {
+    S.flash = { sq: to, k: 'near' };
+    S.msg = { k: 'near', ic: '~', t: (want ? 'Right kind of piece, but not' : 'This move is free, but it is not') + ' the move played in the game. It may be reasonable; look again.' };
+  }
+  render();
+  S.timer = setTimeout(() => { S.flash = null; render(); }, 1400);
+}
+
+function finishPuzzle(){
+  const p = P(), perfect = S.misses === 0 && S.hints === 0;
+  S.finished = true; S.busy = false;
+  results[p.id] = { r: perfect ? 'perfect' : 'help', misses: S.misses, hints: S.hints }; saveResults();
+  S.msg = { k: 'ok', ic: '✓', t: (perfect ? 'Solved with no misses and no hints.' : 'Solved with ' + plural(S.misses, 'miss', 'es') + ' and ' + plural(S.hints, 'hint') + '.') };
+  render();
+}
+
+function hint(){
+  if (S.finished || S.shown || S.busy) return;
+  const p = P(), u = p.line[S.ply];
+  S.hintLevel = Math.min(3, S.hintLevel + 1); S.hints++;
+  S.hintFrom = u.slice(0, 2); S.hintTo = u.slice(2, 4);
+  if (S.hintLevel === 1) S.msg = { k: 'hint', ic: '?', t: 'Hint 1 of 3: the piece to move is the one on the dashed square.' };
+  else if (S.hintLevel === 2) S.msg = { k: 'hint', ic: '?', t: 'Hint 2 of 3: it goes to the second dashed square.' };
+  else S.msg = { k: 'hint', ic: '?', t: 'Hint 3 of 3: the move is ' + p.sans[S.ply] + '.' };
+  render();
+}
+
+function showSolution(){
+  if (S.finished || S.shown) return;
+  const p = P(); clearTimeout(S.timer);
+  while (S.ply < p.line.length){
+    const u = p.line[S.ply]; S.chess.move({ from: u.slice(0, 2), to: u.slice(2, 4), promotion: u[4] || 'q' });
+    S.last = [u.slice(0, 2), u.slice(2, 4)]; S.ply++;
+  }
+  S.shown = true; S.focus = 0; S.busy = false; S.sel = null; S.targets = []; S.flash = null; S.hintFrom = S.hintTo = null;
+  if (!results[p.id]) { results[p.id] = { r: 'shown' }; saveResults(); }
+  S.msg = { k: 'info', ic: 'i', t: 'Solution shown: ' + pgn(p, p.sans, p.sans.length) };
+  render();
+}
+
+/* ---------- the expert's move behind each accepted chess move ---------- */
+const LV = { 1: ['L1', 'look it up', 'white', 'the manual'], 2: ['L2', 'recognise the case', 'grey', 'the technician'], 3: ['L3', 'weigh the evidence', 'black', 'the specialist'] };
+const RS = ['read', 'look', 'try', 'answer', 'a file', 'project'];
+const RUNG_ASK = ['only reading', 'looking at something of their own', 'trying a change', 'answering one question', 'finding and sending one file', 'sending the whole project'];
+const ORDER = {
+  'RT-DEFER': 'The promise to look comes after a request, never before (10 of 10 replies).',
+  'Q-FILE': 'A request for a file is usually closed by the promise to look (4 of 5).',
+  'Q-PROJECT': 'A request for the project is usually closed by the promise to look (5 of 7), and often waits behind a cheaper try.',
+  'RT-DOC': 'It usually follows the explanation or the tool switch it leads to.',
+  'FIX-SWITCH': 'A tool switch is usually followed by the document that teaches the new tool (4 of 4).',
+  'FIX-EDIT': 'A rule usually comes before the edit it implies (3 of 4).',
+  'EXP-LIMIT': 'Saying what the tool can or cannot do comes before the tool or document it leads to (4 of 4 and 3 of 3).',
+  'EXP-MECH': 'A mechanism often comes before the edit it implies.',
+  'EXP-PRECOND': 'A prerequisite comes before the document that teaches it (3 of 3).',
+  'M-COND': 'The condition comes before the costly request it protects (3 of 3).',
+  'M-HEDGE': 'A hedge comes before what it hedges (4 of 4).'
+};
+const LADDER = [
+  ['Send the project', 'the asker has to send the whole project'],
+  ['Send a file or settings', 'the asker has to find and send one file, or the settings'],
+  ['Answer one thing', 'the asker answers one question'],
+  ['Try something', 'the asker tries a change'],
+  ['Look at something', 'the asker looks at something of their own'],
+  ['Read', 'the asker only has to read']
+];
+function renderLadder(){
+  const p = P(), used = {};
+  p.reply.moves.forEach(id => { const r = byMove[id].rung; if (r !== null) used[r] = (used[r] || 0) + 1; });
+  const free = p.reply.moves.filter(id => byMove[id].rung === null).length;
+  let html = '<div class="hd">The cost ladder: the bigger the piece, the more work for the person who asked</div>';
+  for (let r = 5; r >= 0; r--){
+    const n = used[r] || 0;
+    html += '<div class="lr' + (n ? ' on' : '') + '"><span class="g" aria-hidden="true">' + GL[RUNG_PT[r]] + '</span><span><b>' + LADDER[5 - r][0] + ' (' + r + ')</b><small>' + LADDER[5 - r][1] + (r === 5 ? ' (king or castling)' : '') + '</small></span><span class="n">' + (n ? 'in this puzzle \u00d7' + n : '') + '</span></div>';
+  }
+  html += '<div class="lr' + (free ? ' on' : '') + '"><span class="g" aria-hidden="true">\u25C7</span><span><b>Free move</b><small>no cost of its own: a courtesy, a condition, a hedge or the promise to look (any piece)</small></span><span class="n">' + (free ? 'in this puzzle \u00d7' + free : '') + '</span></div>';
+  html += '<div class="lv"><span>Colour of a piece = knowledge the move needs:</span><span><i style="background:var(--l1)"></i>white, the manual (L1)</span><span><i style="background:var(--l2)"></i>grey, the technician (L2)</span><span><i style="background:var(--l3)"></i>black, the specialist (L3)</span></div>';
+  $('ladder6').innerHTML = html;
+}
+
+function renderMoveCard(){
+  const box = $('mcard'), p = P();
+  const known = S.shown ? p.k : S.done;
+  if (S.focus == null || S.focus >= known){ box.hidden = true; return; }
+  const i = S.focus, id = p.reply.moves[i], m = byMove[id], lv = LV[m.lvl];
+  const glyph = m.rung !== null ? GL[RUNG_PT[m.rung]] : '\u25C7';
+  const ladder = RS.map((nm, r) => '<span class="rung' + (m.rung === r ? ' on' : '') + '"><span class="g">' + GL[RUNG_PT[r]] + '</span>' + r + ' ' + nm + '</span>').join('');
+  let html = '<div class="side"><span class="big" style="color:var(--l' + m.lvl + ');-webkit-text-stroke:1.6px var(--l' + m.lvl + 's)">' + glyph + '</span><span class="lvl">' + lv[0] + '<br>' + lv[2] + ' piece</span></div>';
+  html += '<div><h4><span class="dot" style="background:var(--fam-' + m.fam + ')"></span>' + esc(id) + '</h4>' +
+    '<div class="note">Move ' + (i + 1) + ' of ' + p.k + ' in the expert\u2019s reply \u00b7 ' + esc(m.fam) + ' family \u00b7 the expert ' + esc(m.act) + '</div>' +
+    '<div class="ladder" role="img" aria-label="Cost ladder">' + ladder + '</div><dl class="kv">';
+  html += '<dt>What it is</dt><dd>' + esc(GLOSS[id]) + '</dd>';
+  html += '<dt>Cost to the asker</dt><dd>' + (m.rung !== null ? '<b>Rung ' + m.rung + '</b>: ' + RUNG_ASK[m.rung] + '.' : 'No cost of its own: it does not ask the person to do anything.') + '</dd>';
+  html += '<dt>Doubt it removes</dt><dd>' + esc(m.red) + '</dd>';
+  html += '<dt>When the expert uses it</dt><dd>' + esc(m.trg) + '.</dd>';
+  html += '<dt>Knowledge</dt><dd>' + lv[0] + ': ' + lv[1] + ' (' + lv[3] + '; a ' + lv[2] + ' piece).</dd>';
+  html += '<dt>In four communities</dt><dd>' + commPlot(id) + '<span class="note">Share of the first replies read in each community that contain this move; the line is the 95% interval. SWAT-MODFLOW is one expert; the others pool several responders.</span></dd>';
+  html += '<dt>In the group</dt><dd>Used in ' + m.uses + ' of ' + D.owner_replies + ' first replies.' + (m.ex ? ' Example of a whole reply that was only this move: \u201c' + esc(m.ex) + '\u201d.' : '') + '</dd>';
+  if (ORDER[id]) html += '<dt>Order</dt><dd>' + esc(ORDER[id]) + '</dd>';
+  html += '</dl></div>';
+  box.innerHTML = html; box.hidden = false;
+}
+
+function renderReveal(){
+  const box = $('reveal'), p = P();
+  if (!(S.finished || S.shown)){ box.hidden = true; return; }
+  box.hidden = false;
+  const g = p.game, res = g.result;
+  const loserN = res === '1-0' ? g.black : g.white;
+  let html = '<dl class="kv"><dt>Played</dt><dd style="font-family:var(--mono);font-size:13px">' + esc(pgn(p, p.sans, p.sans.length)) + '</dd>';
+  if (g.url) html += '<dt>Full game</dt><dd><a href="' + esc(g.url) + '" target="_blank" rel="noopener">Watch it on Lichess</a></dd>';
+  html += '<dt>Then</dt><dd>' + (p.kind === 'resign' ? esc(loserN) + ' resigned. The game ended ' + esc(res) + '.' : 'The game went on (final result ' + esc(res) + ').') + '</dd></dl>';
+  html += '<div><div class="eyebrow" style="margin-bottom:6px">The expert\u2019s reply</div><p class="note">' + (p.side === 'w' ? 'You played White: the reply needed at most the technician (L2): look it up or recognise the case.' : 'You played Black: the reply needed the specialist (L3): weigh the evidence.') + ' ' + (p.kind === 'resign' ? 'The game ended in a resignation, like a direct answer with no request: the exchange is resolved.' : p.kind === 'midres' ? 'This stretch is from the middle of a game, like a long direct answer with no request: the exchange is resolved, but no game of the collection ends in these moves, so nobody resigns here.' : 'The game was left in the middle, like a reply that asks for something and waits: the exchange stays open.') + ' Tap a move above to see its piece and its place on the ladder.</p></div>';
+  html += '<dl class="kv"><dt>Reply</dt><dd>' + esc(p.reply.text) + '</dd><dt>Moves</dt><dd style="line-height:2">' + p.reply.moves.map(mchip).join(' \u2192 ') + '</dd>' +
+    (p.takeaway ? '<dt>Takeaway</dt><dd><b>' + esc(p.takeaway) + '</b></dd>' : '') + '</dl>';
+  box.innerHTML = html;
+}
+
+/* ---------- wiring ---------- */
+$('board').addEventListener('click', e => { const r = e.target.closest('.sq'); if (r) onSquare(r.dataset.sq); });
+$('moveForm').addEventListener('submit', e => {
+  e.preventDefault();
+  if (S.busy || S.finished || S.shown) return;
+  const txt = $('moveIn').value.trim(); if (!txt) return;
+  const t = new Chess(S.chess.fen());
+  const m = t.move(txt, { sloppy: true });
+  if (!m){ S.msg = { k: 'bad', ic: '✕', t: '"' + txt + '" is not a legal move here.' }; render(); return; }
+  if (m.color !== solverColor()){ S.msg = { k: 'bad', ic: '✕', t: 'It is ' + lang[solverColor()] + ' to move.' }; render(); return; }
+  $('moveIn').value = '';
+  attempt(m.from, m.to, m.promotion);
+});
+$('zHint').onclick = hint;
+$('zShow').onclick = showSolution;
+$('zUndo').onclick = () => startPuzzle(S.i);
+$('startNow').onclick = () => $('surprise').click();
+$('chg').onclick = () => $('chooser').scrollIntoView({ block: 'start', behavior: 'smooth' });
+$('surprise').onclick = () => { const idx = filtered(); const fresh = idx.filter(i => !results[puzzles[i].id] || results[puzzles[i].id].r === 'shown'); const pool = fresh.length ? fresh : idx; if (pool.length) goTo(pool[Math.floor(Math.random() * pool.length)]); };
+$('zNext').onclick = () => { const idx = filtered(); startPuzzle(idx.length ? (idx.find(i => i > S.i) !== undefined ? idx.find(i => i > S.i) : idx[0]) : (S.i + 1) % puzzles.length); };
+
+renderEvents();
+S.revealAll = false;
+let first = puzzles.findIndex(q => !results[q.id] || results[q.id].r === 'shown'); if (first < 0) first = 0;
+startPuzzle(first);
+</script>

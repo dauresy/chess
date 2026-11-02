@@ -1,0 +1,372 @@
+[
+ {
+  "ridx": 18,
+  "cls": "P",
+  "k": 6,
+  "kind": "analysis",
+  "side": "w",
+  "n_matches": 12,
+  "n_end_of_game": null,
+  "selected": true
+ },
+ {
+  "ridx": 37,
+  "cls": "D",
+  "k": 5,
+  "kind": "midres",
+  "side": "b",
+  "n_matches": 76,
+  "n_end_of_game": 0,
+  "selected": true
+ },
+ {
+  "ridx": 17,
+  "cls": "P",
+  "k": 4,
+  "kind": "analysis",
+  "side": "b",
+  "n_matches": 197,
+  "n_end_of_game": null,
+  "selected": true
+ },
+ {
+  "ridx": 52,
+  "cls": "P",
+  "k": 5,
+  "kind": "analysis",
+  "side": "w",
+  "n_matches": 42,
+  "n_end_of_game": null,
+  "selected": true
+ },
+ {
+  "ridx": 47,
+  "cls": "D",
+  "k": 4,
+  "kind": "midres",
+  "side": "w",
+  "n_matches": 150,
+  "n_end_of_game": 0,
+  "selected": true
+ },
+ {
+  "ridx": 53,
+  "cls": "P",
+  "k": 4,
+  "kind": "analysis",
+  "side": "w",
+  "n_matches": 58,
+  "n_end_of_game": null,
+  "selected": true
+ },
+ {
+  "ridx": 11,
+  "cls": "D",
+  "k": 4,
+  "kind": "midres",
+  "side": "w",
+  "n_matches": 31,
+  "n_end_of_game": 0,
+  "selected": true
+ },
+ {
+  "ridx": 45,
+  "cls": "D",
+  "k": 4,
+  "kind": "midres",
+  "side": "w",
+  "n_matches": 31,
+  "n_end_of_game": 0,
+  "selected": true
+ },
+ {
+  "ridx": 13,
+  "cls": "P",
+  "k": 4,
+  "kind": "analysis",
+  "side": "w",
+  "n_matches": 43,
+  "n_end_of_game": null,
+  "selected": true
+ },
+ {
+  "ridx": 35,
+  "cls": "D",
+  "k": 3,
+  "kind": "resign",
+  "side": "b",
+  "n_matches": 5,
+  "n_end_of_game": 5,
+  "selected": true
+ },
+ {
+  "ridx": 42,
+  "cls": "D",
+  "k": 3,
+  "kind": "midres",
+  "side": "b",
+  "n_matches": 505,
+  "n_end_of_game": 0,
+  "selected": true
+ },
+ {
+  "ridx": 19,
+  "cls": "D",
+  "k": 3,
+  "kind": "resign",
+  "side": "b",
+  "n_matches": 6,
+  "n_end_of_game": 6,
+  "selected": true
+ },
+ {
+  "ridx": 8,
+  "cls": "D",
+  "k": 3,
+  "kind": "resign",
+  "side": "w",
+  "n_matches": 1,
+  "n_end_of_game": 1,
+  "selected": true
+ },
+ {
+  "ridx": 22,
+  "cls": "D",
+  "k": 2,
+  "kind": "resign",
+  "side": "b",
+  "n_matches": 1,
+  "n_end_of_game": 1,
+  "selected": true
+ },
+ {
+  "ridx": 39,
+  "cls": "D",
+  "k": 2,
+  "kind": "resign",
+  "side": "b",
+  "n_matches": 1,
+  "n_end_of_game": 1,
+  "selected": true
+ },
+ {
+  "ridx": 20,
+  "cls": "D",
+  "k": 2,
+  "kind": "resign",
+  "side": "b",
+  "n_matches": 4,
+  "n_end_of_game": 4,
+  "selected": true
+ },
+ {
+  "ridx": 24,
+  "cls": "D",
+  "k": 2,
+  "kind": "resign",
+  "side": "b",
+  "n_matches": 4,
+  "n_end_of_game": 4,
+  "selected": true
+ },
+ {
+  "ridx": 40,
+  "cls": "P",
+  "k": 3,
+  "kind": "analysis",
+  "side": "b",
+  "n_matches": 89,
+  "n_end_of_game": null,
+  "selected": true
+ },
+ {
+  "ridx": 27,
+  "cls": "P",
+  "k": 3,
+  "kind": "analysis",
+  "side": "b",
+  "n_matches": 1457,
+  "n_end_of_game": null,
+  "selected": true
+ },
+ {
+  "ridx": 44,
+  "cls": "P",
+  "k": 3,
+  "kind": "analysis",
+  "side": "w",
+  "n_matches": 268,
+  "n_end_of_game": null,
+  "selected": true
+ },
+ {
+  "ridx": 4,
+  "cls": "A",
+  "k": 4,
+  "kind": "analysis",
+  "side": "w",
+  "n_matches": 146,
+  "n_end_of_game": null,
+  "selected": true
+ },
+ {
+  "ridx": 30,
+  "cls": "A",
+  "k": 3,
+  "kind": "analysis",
+  "side": "w",
+  "n_matches": 74,
+  "n_end_of_game": null,
+  "selected": true
+ },
+ {
+  "ridx": 55,
+  "cls": "A",
+  "k": 3,
+  "kind": "analysis",
+  "side": "w",
+  "n_matches": 1127,
+  "n_end_of_game": null,
+  "selected": true
+ },
+ {
+  "ridx": 48,
+  "cls": "D",
+  "k": 2,
+  "kind": "midres",
+  "side": "w",
+  "n_matches": 565,
+  "n_end_of_game": 0,
+  "selected": true
+ },
+ {
+  "ridx": 10,
+  "cls": "D",
+  "k": 2,
+  "kind": "midres",
+  "side": "b",
+  "n_matches": 575,
+  "n_end_of_game": 1,
+  "selected": true
+ },
+ {
+  "ridx": 6,
+  "cls": "D",
+  "k": 2,
+  "kind": "resign",
+  "side": "w",
+  "n_matches": 1,
+  "n_end_of_game": 1,
+  "selected": true
+ },
+ {
+  "ridx": 23,
+  "cls": "D",
+  "k": 3,
+  "kind": "midres",
+  "side": "w",
+  "n_matches": 143,
+  "n_end_of_game": 0,
+  "selected": true
+ },
+ {
+  "ridx": 43,
+  "cls": "D",
+  "k": 2,
+  "kind": "midres",
+  "side": "w",
+  "n_matches": 565,
+  "n_end_of_game": 0,
+  "selected": true
+ },
+ {
+  "ridx": 21,
+  "cls": "D",
+  "k": 2,
+  "kind": "resign",
+  "side": "w",
+  "n_matches": 3,
+  "n_end_of_game": 3,
+  "selected": true
+ },
+ {
+  "ridx": 50,
+  "cls": "D",
+  "k": 2,
+  "kind": "midres",
+  "side": "w",
+  "n_matches": 437,
+  "n_end_of_game": 1,
+  "selected": true
+ },
+ {
+  "ridx": 26,
+  "cls": "D",
+  "k": 2,
+  "kind": "midres",
+  "side": "w",
+  "n_matches": 565,
+  "n_end_of_game": 0,
+  "selected": true
+ },
+ {
+  "ridx": 15,
+  "cls": "D",
+  "k": 2,
+  "kind": "resign",
+  "side": "w",
+  "n_matches": 3,
+  "n_end_of_game": 3,
+  "selected": true
+ },
+ {
+  "ridx": 9,
+  "cls": "D",
+  "k": 2,
+  "kind": "midres",
+  "side": "w",
+  "n_matches": 838,
+  "n_end_of_game": 3,
+  "selected": true
+ },
+ {
+  "ridx": 0,
+  "cls": "P",
+  "k": 2,
+  "kind": "analysis",
+  "side": "w",
+  "n_matches": 447,
+  "n_end_of_game": null,
+  "selected": true
+ },
+ {
+  "ridx": 12,
+  "cls": "A",
+  "k": 2,
+  "kind": "analysis",
+  "side": "b",
+  "n_matches": 2198,
+  "n_end_of_game": null,
+  "selected": true
+ },
+ {
+  "ridx": 5,
+  "cls": "A",
+  "k": 2,
+  "kind": "analysis",
+  "side": "w",
+  "n_matches": 1639,
+  "n_end_of_game": null,
+  "selected": true
+ },
+ {
+  "ridx": 32,
+  "cls": "D",
+  "k": 2,
+  "kind": "resign",
+  "side": "b",
+  "n_matches": 12,
+  "n_end_of_game": 12,
+  "selected": true
+ }
+]

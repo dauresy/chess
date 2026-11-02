@@ -1,0 +1,2 @@
+# only for source/gen_puzzles.py; source/build_page.py and index.html need nothing
+chess>=1.10

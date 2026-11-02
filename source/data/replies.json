@@ -1,0 +1,646 @@
+[
+ {
+  "cls": "P",
+  "moves": [
+   "RT-RELEASE",
+   "Q-VERSION"
+  ],
+  "lvl": 1,
+  "text": "fixed in v2.3.1; asks whether the latest version was installed and tested",
+  "prob": "export modflow.obs fails with a TypeError",
+  "cat": "Plug-in error"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "FIX-LAYOUT"
+  ],
+  "lvl": 2,
+  "text": "put the SWAT inputs, MODFLOW inputs and the four link files in one folder",
+  "prob": "empty outputs; the log stops before MODFLOW is read",
+  "cat": "Input / set-up"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "FIX-RESET"
+  ],
+  "lvl": 2,
+  "text": "remove the existing HRU shapefile and import again",
+  "prob": "importing the HRU shapefile crashes QGIS",
+  "cat": "Plug-in error"
+ },
+ {
+  "cls": "X",
+  "moves": [
+   "M-UNSURE",
+   "RT-TOOL"
+  ],
+  "lvl": 3,
+  "text": "not sure what causes the crash; suggests trying QSWATMOD",
+  "prob": "error screenshot when using the SWAT-MODFLOW interface",
+  "cat": "Run-time failure"
+ },
+ {
+  "cls": "A",
+  "moves": [
+   "CHK-PRECOND",
+   "M-COND",
+   "Q-PROJECT",
+   "RT-DEFER"
+  ],
+  "lvl": 2,
+  "text": "check that the simulation ran; share project folder and GIS file",
+  "prob": "KeyError 2 when plotting results",
+  "cat": "Plug-in error"
+ },
+ {
+  "cls": "A",
+  "moves": [
+   "M-REASON",
+   "Q-SETTINGS"
+  ],
+  "lvl": 2,
+  "text": "share the MODFLOW model settings and parameter values",
+  "prob": "odd water-table elevations compared with ModelMuse",
+  "cat": "Results interpretation"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "FIX-SWITCH",
+   "RT-DOC"
+  ],
+  "lvl": 2,
+  "text": "use ModelMuse; tutorial links",
+  "prob": "how to prepare the MODFLOW discretization file",
+  "cat": "How-to / guidance"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "EXP-LIMIT"
+  ],
+  "lvl": 1,
+  "text": "outputs exist at HRU, subbasin and grid scales",
+  "prob": "is the water balance normalized by SWAT or MODFLOW area",
+  "cat": "Results interpretation"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "EXP-REFRAME",
+   "EXP-LIMIT",
+   "RT-DOC"
+  ],
+  "lvl": 2,
+  "text": "lists the available outputs and scales",
+  "prob": "which outputs can feed a flood model",
+  "cat": "How-to / guidance"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "RT-TOOL",
+   "EXP-LIMIT"
+  ],
+  "lvl": 2,
+  "text": "use QSWATMOD instead of SWATMOD-prep; link",
+  "prob": "inputs for an ArcSWAT-MODFLOW project (first post deleted)",
+  "cat": "How-to / guidance"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "INSPECT",
+   "FIX-SWITCH"
+  ],
+  "lvl": 3,
+  "text": "the solver is PCG, not NWT: try NWT",
+  "prob": "forrtl severe (29) file not found, unit 146",
+  "cat": "Run-time failure"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "EXP-PRECOND",
+   "EXP-LIMIT",
+   "FIX-SWITCH",
+   "RT-DOC"
+  ],
+  "lvl": 2,
+  "text": "a MODFLOW model is needed; use ModelMuse for several layers",
+  "prob": "build MODFLOW first or follow the manual steps",
+  "cat": "How-to / guidance"
+ },
+ {
+  "cls": "A",
+  "moves": [
+   "M-SOCIAL",
+   "Q-QUANT"
+  ],
+  "lvl": 3,
+  "text": "asks the number of river cells and the simulation period including warm-up",
+  "prob": "yearly exchange output has duplicated lines",
+  "cat": "Results interpretation"
+ },
+ {
+  "cls": "P",
+  "moves": [
+   "EXP-REFRAME",
+   "Q-STATE",
+   "Q-FILE",
+   "RT-DEFER"
+  ],
+  "lvl": 2,
+  "text": "does not look like an error; does the model crash? send the files",
+  "prob": "MODFLOW steps differ from the SWAT-MODFLOW run",
+  "cat": "Coupling / configuration"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "RT-DOC"
+  ],
+  "lvl": 1,
+  "text": "link to the software page",
+  "prob": "how to get started",
+  "cat": "How-to / guidance"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "EXP-PRECOND",
+   "RT-DOC"
+  ],
+  "lvl": 1,
+  "text": "lists the inputs; documentation link",
+  "prob": "what data QSWATMOD needs",
+  "cat": "How-to / guidance"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "EXP-PROC"
+  ],
+  "lvl": 1,
+  "text": "tab-delimited spreadsheet; naming explained",
+  "prob": "format of modflow.obd",
+  "cat": "Input / set-up"
+ },
+ {
+  "cls": "P",
+  "moves": [
+   "M-HEDGE",
+   "FIX-EDIT",
+   "M-COND",
+   "Q-PROJECT"
+  ],
+  "lvl": 3,
+  "text": "change SS to TR in the .dis; if it persists, share the project",
+  "prob": "model runs a single period (message in an image)",
+  "cat": "Run-time failure"
+ },
+ {
+  "cls": "P",
+  "moves": [
+   "EXP-MECH",
+   "FIX-EDIT",
+   "RT-DOC",
+   "M-COND",
+   "Q-FILE",
+   "RT-DEFER"
+  ],
+  "lvl": 2,
+  "text": "set the solver to COMPLEX; FAQ link; if not, send the MODFLOW file",
+  "prob": "convergence error on the first day",
+  "cat": "Run-time failure"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "EXP-PRINCIPLE",
+   "RT-DOC",
+   "M-SELFCORRECT"
+  ],
+  "lvl": 3,
+  "text": "units must be consistent; reference link",
+  "prob": "units of the observed values in RVOB",
+  "cat": "Input / set-up"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "EXP-VALIDATE",
+   "EXP-MECH"
+  ],
+  "lvl": 3,
+  "text": "monthly is fine; stress periods follow pumping; recharge comes from SWAT",
+  "prob": "monthly calibration for a snow-dominated basin; stress periods",
+  "cat": "Calibration / method"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "EXP-PROC",
+   "EXP-REFRAME"
+  ],
+  "lvl": 2,
+  "text": "menu path in ModelMuse; attributes are not needed",
+  "prob": "export the MODFLOW grid shapefile with attributes",
+  "cat": "Input / set-up"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "EXP-MECH",
+   "FIX-PARAMS"
+  ],
+  "lvl": 3,
+  "text": "all percolation goes to MODFLOW; adjust CN, ET and soil parameters",
+  "prob": "which SWAT output becomes recharge, and how to reduce it",
+  "cat": "Calibration / method"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "EXP-LIMIT",
+   "FIX-SWITCH",
+   "RT-DOC"
+  ],
+  "lvl": 2,
+  "text": "the tool builds one layer; use ModelMuse",
+  "prob": "several layers in SWATMOD-prep",
+  "cat": "Input / set-up"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "EXP-MECH",
+   "EXP-VALIDATE"
+  ],
+  "lvl": 3,
+  "text": "derived from SWAT percolation; approach reasonable, check the water balance",
+  "prob": "questions on the recharge output",
+  "cat": "Results interpretation"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "CHK-LISTING"
+  ],
+  "lvl": 2,
+  "text": "check the .out, .lst or .list file",
+  "prob": "run stops after \"MODFLOW is being used\" after editing to two layers",
+  "cat": "Run-time failure"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "RT-RELEASE",
+   "FIX-UPGRADE"
+  ],
+  "lvl": 2,
+  "text": "fixed in v2.3.1; upgrade",
+  "prob": "export modflow.obs TypeError",
+  "cat": "Plug-in error"
+ },
+ {
+  "cls": "P",
+  "moves": [
+   "M-HEDGE",
+   "Q-FILE",
+   "RT-DEFER"
+  ],
+  "lvl": 3,
+  "text": "the plug-in could not read the grid rows; share the .dis",
+  "prob": "UnboundLocalError (delr) at 96%",
+  "cat": "Plug-in error"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "FIX-EDIT"
+  ],
+  "lvl": 2,
+  "text": "remove the three top lines of the well file",
+  "prob": "well package error in the .lst",
+  "cat": "Input / set-up"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "EXP-PRINCIPLE"
+  ],
+  "lvl": 1,
+  "text": "any units, as long as they are consistent",
+  "prob": "units of hydraulic conductivity",
+  "cat": "Input / set-up"
+ },
+ {
+  "cls": "A",
+  "moves": [
+   "Q-STATE",
+   "Q-ERROR",
+   "Q-FILE"
+  ],
+  "lvl": 2,
+  "text": "did linking succeed? share error messages or the .lst",
+  "prob": "the run button does nothing",
+  "cat": "Run-time failure"
+ },
+ {
+  "cls": "A",
+  "moves": [
+   "Q-PROJECT"
+  ],
+  "lvl": 1,
+  "text": "share project folder and QGIS file (later fix: add a grid column)",
+  "prob": "run window flashes and closes; python warning",
+  "cat": "Run-time failure"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "M-HEDGE",
+   "EXP-LIMIT"
+  ],
+  "lvl": 3,
+  "text": "not aware of any limit",
+  "prob": "maximum number of wells in MODFLOW",
+  "cat": "How-to / guidance"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "EXP-PROC"
+  ],
+  "lvl": 1,
+  "text": "menu path to export the river package",
+  "prob": "export the active river cells from ModelMuse",
+  "cat": "Input / set-up"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "EXP-MECH"
+  ],
+  "lvl": 2,
+  "text": "answers question by question",
+  "prob": "double counting of groundwater discharge; ALPHA_BNK",
+  "cat": "Calibration / method"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "M-UNSURE",
+   "FIX-PARAMS",
+   "M-RANK"
+  ],
+  "lvl": 3,
+  "text": "hard to specify; lower K and Sy, raise CN2, then river parameters",
+  "prob": "runoff differs between SWAT and SWAT-MODFLOW-RT3D",
+  "cat": "Calibration / method"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "CHK-LISTING"
+  ],
+  "lvl": 2,
+  "text": "examine the bottom of the .list or .lst file",
+  "prob": "\"allocate error\" after one day",
+  "cat": "Run-time failure"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "M-RANK",
+   "CHK-SETTING",
+   "CHK-WATERTABLE",
+   "FIX-PARAMS",
+   "M-SELFCORRECT"
+  ],
+  "lvl": 3,
+  "text": "tolerance settings in the .nwt or head elevation; check the water table",
+  "prob": "cyclical discharge in some subbasins",
+  "cat": "Results interpretation"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "M-SOCIAL"
+  ],
+  "lvl": 1,
+  "text": "welcome",
+  "prob": "new member introduction",
+  "cat": "Other (greeting)"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "FIX-PARAMS",
+   "EXP-MECH"
+  ],
+  "lvl": 3,
+  "text": "K, Sy, thicknesses, boundary and initial heads",
+  "prob": "how to lower the simulated groundwater level by about 10 m",
+  "cat": "Calibration / method"
+ },
+ {
+  "cls": "P",
+  "moves": [
+   "EXP-MECH",
+   "Q-CLARIFY",
+   "EXP-LIMIT"
+  ],
+  "lvl": 3,
+  "text": "answers the first question; says the expert does not understand the others",
+  "prob": "how QSWATMOD passes recharge and streamflow",
+  "cat": "How-to / guidance"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "EXP-LIMIT"
+  ],
+  "lvl": 1,
+  "text": "yes, QSWAT and ArcSWAT",
+  "prob": "can QSWATMOD use QSWAT outputs",
+  "cat": "How-to / guidance"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "M-HEDGE",
+   "CHK-LAYER",
+   "RT-DOC"
+  ],
+  "lvl": 3,
+  "text": "problem with the mf_grid layer; link to add or subtract rows and columns",
+  "prob": "few cells show exchange; odd recharge",
+  "cat": "Results interpretation"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "EXP-REFRAME",
+   "FIX-SWITCH"
+  ],
+  "lvl": 2,
+  "text": "not a code change; use the .mgt schedule or MODFLOW settings",
+  "prob": "timing of irrigation from pumping",
+  "cat": "Coupling / configuration"
+ },
+ {
+  "cls": "P",
+  "moves": [
+   "EXP-REFRAME",
+   "Q-PROJECT",
+   "RT-DEFER"
+  ],
+  "lvl": 2,
+  "text": "the file is missing because the model crashed; share the project",
+  "prob": "FileNotFound for swatmf_out_MF_obs",
+  "cat": "Run-time failure"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "EXP-PRECOND",
+   "EXP-LIMIT",
+   "FIX-SWITCH",
+   "RT-DOC"
+  ],
+  "lvl": 2,
+  "text": "create the well package first; QSWATMOD cannot; use ModelMuse",
+  "prob": "error adding the well package in QSWATMOD",
+  "cat": "Input / set-up"
+ },
+ {
+  "cls": "A",
+  "moves": [
+   "Q-PROVENANCE"
+  ],
+  "lvl": 3,
+  "text": "asks how the bottom elevations were assigned",
+  "prob": "crashes at day 16 with no message",
+  "cat": "Run-time failure"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "M-SOCIAL",
+   "EXP-LIMIT",
+   "EXP-MECH",
+   "FIX-EDIT"
+  ],
+  "lvl": 2,
+  "text": "allowed; extend MODFLOW with dummy years",
+  "prob": "different time steps and periods for SWAT and MODFLOW",
+  "cat": "Coupling / configuration"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "EXP-MECH",
+   "FIX-EDIT"
+  ],
+  "lvl": 2,
+  "text": "the run ends at the earlier end date; extend MODFLOW",
+  "prob": "SWAT has 8 years and MODFLOW 5",
+  "cat": "Coupling / configuration"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "RT-THREAD"
+  ],
+  "lvl": 1,
+  "text": "link to an earlier comment",
+  "prob": "the \"write RT3D input files\" tab is inactive",
+  "cat": "Plug-in error"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "FIX-EDIT",
+   "EXP-MECH"
+  ],
+  "lvl": 2,
+  "text": "add about 100 days to the MODFLOW period (leap years)",
+  "prob": "exit code 24, end of file on the well file at period 2",
+  "cat": "Run-time failure"
+ },
+ {
+  "cls": "A",
+  "moves": [
+   "Q-FILE",
+   "RT-DEFER"
+  ],
+  "lvl": 2,
+  "text": "share the MODFLOW listing (.list, .lst or .out)",
+  "prob": "the last step does not run",
+  "cat": "Run-time failure"
+ },
+ {
+  "cls": "P",
+  "moves": [
+   "Q-FORMAT",
+   "EXP-LIMIT",
+   "M-COND",
+   "Q-PROJECT",
+   "RT-DEFER"
+  ],
+  "lvl": 2,
+  "text": "is the DEM a TIFF? it should work; if it persists, share the project",
+  "prob": "DEM upload fails (insertChildNode)",
+  "cat": "Plug-in error"
+ },
+ {
+  "cls": "P",
+  "moves": [
+   "EXP-MECH",
+   "Q-STATE",
+   "FIX-INTERIM",
+   "RT-DEFER"
+  ],
+  "lvl": 2,
+  "text": "answers the domain question; asks whether it crashes before any simulation",
+  "prob": "MODFLOW domain smaller than the catchment; a Yes/No option",
+  "cat": "Coupling / configuration"
+ },
+ {
+  "cls": "D",
+  "moves": [
+   "EXP-PRECOND"
+  ],
+  "lvl": 1,
+  "text": "basics strongly recommended",
+  "prob": "do I need to learn the models first",
+  "cat": "How-to / guidance"
+ },
+ {
+  "cls": "A",
+  "moves": [
+   "M-REASON",
+   "Q-PROJECT",
+   "RT-DEFER"
+  ],
+  "lvl": 1,
+  "text": "needs to see the project; share folder and GIS file",
+  "prob": "linking pumping to irrigation; irrigation.txt all zeros",
+  "cat": "Coupling / configuration"
+ },
+ {
+  "cls": "A",
+  "moves": [
+   "Q-PROJECT",
+   "RT-DEFER"
+  ],
+  "lvl": 1,
+  "text": "share project folder and GIS file",
+  "prob": "NaN in the exchange file",
+  "cat": "Results interpretation"
+ }
+]

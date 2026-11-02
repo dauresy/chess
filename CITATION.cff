@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "iHydro Chess"
+abstract: >-
+  Chess puzzles built from real grandmaster games. Each puzzle has as many moves as a real expert reply in the
+  SWAT-MODFLOW Google group: the pieces that move are the cost of each move to the person who asked, White or Black
+  is the knowledge level the reply needed, and a direct reply is the end of a decisive game. Solving the chess
+  reveals the matching move of the expert's reply and what it teaches about modelling support.
+authors:
+  - family-names: "Serrano Suarez"
+    given-names: "David"
+    affiliation: "Texas Tech University"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+  - family-names: "Park"
+    given-names: "Seonggyu"
+    # affiliation: "..."
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+version: "1.0.0"
+date-released: "2026-10-29"
+license: MIT
+keywords:
+  - hydrological modelling
+  - SWAT-MODFLOW
+  - expert support
+  - chess
+  - education
+# After publishing, add:
+repository-code: "https://github.com/dauresy/chess"
+url: "https://dauresy.github.io/chess/"
+# doi: "10.5281/zenodo.XXXXXXX"
