@@ -1,4 +1,4 @@
-# iHydro Chess
+<h1 align="center"><img src="source/assets/ihydro-chess-logo-760.png" alt="iHydro Chess" width="360"></h1>
 
 Chess puzzles from real grandmaster games, tied to real expert replies in a modelling forum. Solve the chess; every correct move reveals the matching move of the expert's reply and what it teaches about SWAT-MODFLOW.
 
